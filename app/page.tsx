@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { FAQ } from "@/components/faq";
 import { SiteNav } from "@/components/site-nav";
-import { ServicesMarquee } from "@/components/services-marquee";
+import { ServicesGrid } from "@/components/services-grid";
 
 const services = [
   {
@@ -154,7 +154,7 @@ export default function HomePage() {
               <div className="section-head-main"><p className="eyebrow">PILIH JENIS WEBSITE</p><h2 id="services-title">Jasa pembuatan website<br /><span>untuk kebutuhan Anda.</span></h2></div>
               <p className="section-summary">Dari profil perusahaan dan toko online hingga portofolio dan sistem reservasi, kami merancang website sesuai tujuan dan kebutuhan bisnis Anda.</p>
             </div>
-            <ServicesMarquee services={services} />
+            <ServicesGrid services={services} />
           </div>
         </section>
 
