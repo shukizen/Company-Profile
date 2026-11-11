@@ -44,7 +44,7 @@ export function ScrollTransitions() {
 
     groups.forEach((siblings) => {
       siblings.forEach((item, index) => {
-        item.style.setProperty("--reveal-delay", `${Math.min(index * 120, 480)}ms`);
+        item.style.setProperty("--reveal-delay", `${Math.min(index * 100, 400)}ms`);
       });
     });
 
@@ -65,9 +65,9 @@ export function ScrollTransitions() {
               ? { opacity: 1 }
               : { opacity: 1, translate: "0px 0px", scale: 1 },
             {
-              duration: reduceMotion ? 0.35 : 0.85,
+              duration: reduceMotion ? 0.45 : 1.15,
               delay: delay / 1000,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [0.4, 0, 0.2, 1],
             },
           );
         } else {
