@@ -9548,3 +9548,302 @@ body {
     transition: none;
   }
 }
+
+/* Soft white glow behind the Home hero mockup */
+.hero-visual::before {
+  z-index: -1;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .96) 0%,
+    rgba(255, 255, 255, .58) 48%,
+    rgba(255, 255, 255, .9) 100%
+  );
+  filter: blur(24px);
+  animation: none;
+}
+
+.hero-mockup {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep the Home-to-About boundary clean instead of fading the hero out */
+.hero::after {
+  -webkit-mask-image: none;
+  mask-image: none;
+  clip-path: ellipse(125% 125% at 50% -25%);
+}
+
+@media (min-width: 761px) {
+  .contact .wrap {
+    max-width: var(--max);
+  }
+
+  .contact-card {
+    grid-template-columns: .8fr 1.2fr;
+    grid-template-areas: "map intro";
+    gap: 10%;
+  }
+
+  .contact-card .contact-details-panel {
+    grid-area: map;
+  }
+
+  .contact-card .contact-intro {
+    grid-area: intro;
+  }
+
+  .contact-card .contact-map-wrap {
+    margin: 0;
+  }
+}
+
+.contact {
+  padding-bottom: clamp(180px, 24vw, 340px);
+}
+
+.contact::before {
+  height: clamp(100px, 22vw, 320px);
+}
+
+@media (max-width: 760px) {
+  .contact {
+    padding-bottom: 180px;
+  }
+}
+
+.contact-card .contact-map-wrap {
+  width: 100%;
+  max-width: 480px;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid rgba(119, 83, 61, .14);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(255, 248, 241, .94));
+  box-shadow: 0 22px 55px rgba(79, 48, 31, .11), inset 0 1px 0 rgba(255, 255, 255, .95);
+}
+
+.contact-map-heading {
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.contact-map-heading-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.contact-map-eyebrow {
+  color: #b7613e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.contact-map-heading-copy h3 {
+  margin: 0;
+  color: #302723;
+  font-size: clamp(14px, 1.3vw, 17px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.35;
+}
+
+.contact-map-heading-copy p {
+  margin: 0;
+  color: #81736a;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.contact-map-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 999px;
+  background: #302723;
+  color: #fff8f1;
+  font-size: 10px;
+  font-weight: 700;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.contact-map-link:hover {
+  transform: translateY(-1px);
+  background: #594033;
+}
+
+.contact-map-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #eadfd5;
+  border-radius: 16px;
+  background: #edf3f0;
+  box-shadow: inset 0 1px 5px rgba(47, 61, 54, .08);
+}
+
+.contact-card .contact-map {
+  display: block;
+  width: 100%;
+  height: 323px;
+  max-width: none;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: inherit;
+  box-shadow: none;
+  filter: saturate(.88) contrast(.98);
+}
+
+@media (max-width: 760px) {
+  .contact-card .contact-map {
+    height: 230px;
+  }
+}
+
+.contact-map-badge {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, .76);
+  border-radius: 999px;
+  background: rgba(255, 252, 248, .95);
+  box-shadow: 0 5px 18px rgba(38, 31, 26, .14);
+  color: #302723;
+  font-size: 10px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.contact-map-badge svg {
+  color: #d95820;
+}
+
+.project-more {
+  margin-top: 32px;
+}
+
+.project-more-toggle {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border: 1px solid #e6d8cc;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 7px 20px rgba(74, 48, 32, .06);
+  color: #49382f;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  list-style: none;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.project-more-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.project-more-toggle:hover {
+  transform: translateY(-1px);
+  border-color: #d7b8a4;
+  background: #fff;
+}
+
+.project-more-toggle svg {
+  color: #d95820;
+  transition: transform .2s ease;
+}
+
+.project-more[open] .project-more-toggle svg {
+  transform: rotate(180deg);
+}
+
+.project-more-label-open {
+  display: none;
+}
+
+.project-more[open] .project-more-label-closed {
+  display: none;
+}
+
+.project-more[open] .project-more-label-open {
+  display: inline;
+}
+
+.project-grid-extra {
+  margin-top: 30px;
+}
+
+.site-header .nav-links > .button,
+.site-header .nav.is-scrolled .nav-links > .button {
+  background: linear-gradient(105deg, #a8421c 0%, #c94a1f 100%);
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(43, 20, 9, .35);
+}
+
+.site-header .nav-links > .button:hover,
+.site-header .nav.is-scrolled .nav-links > .button:hover {
+  background: linear-gradient(105deg, #8f3617 0%, #ad3e18 100%);
+  color: #fff;
+}
+
+.site-header .nav-links > a:not(.button):hover,
+.site-header .nav-links > a:not(.button):focus-visible {
+  background: rgba(217, 88, 32, .11);
+  color: #a8421c;
+}
+
+.site-header .nav.is-scrolled .nav-links > a:not(.button):hover,
+.site-header .nav.is-scrolled .nav-links > a:not(.button):focus-visible {
+  background: rgba(255, 173, 8, .16);
+  color: #ffc27a;
+}
+
+.scroll-reveal-item {
+  opacity: 0;
+  translate: 0 30px;
+  scale: .985;
+}
+
+.contact::after {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 320px;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 236, 227, .98) 0%,
+    rgba(245, 236, 227, .82) 30%,
+    rgba(245, 236, 227, .42) 64%,
+    rgba(245, 236, 227, 0) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.contact {
+  background:
+    radial-gradient(ellipse at 86% 16%, rgba(200, 112, 66, .2), transparent 43%),
+    linear-gradient(125deg, #eddbc9 0%, #e8cfb9 56%, #dfbea2 100%);
+}
+
+

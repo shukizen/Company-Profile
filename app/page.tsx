@@ -7,12 +7,14 @@ import {
   Code2,
   Layers3,
   Lightbulb,
+  MapPin,
   PanelsTopLeft,
   MessageCircle,
   Rocket,
   Target,
 } from "lucide-react";
 import { FAQ } from "@/components/faq";
+import { ScrollTransitions } from "@/components/scroll-transitions";
 import { SiteNav } from "@/components/site-nav";
 import { ServicesGrid } from "@/components/services-grid";
 
@@ -116,6 +118,7 @@ export default function HomePage() {
     <>
       <a className="skip-link" href="#main">Lewati ke konten</a>
       <SiteNav />
+      <ScrollTransitions />
       {organizationSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationSchema }} />}
       <main id="main">
         <section className="hero wrap" id="home" aria-labelledby="hero-title">
@@ -189,19 +192,40 @@ export default function HomePage() {
               </div>
               <div className="project-info"><div><span className="project-category">PRODUKSI VISUAL · BRANDING</span><h3>Jogja Creative Production — Company profile</h3><p>Referensi company profile kreatif dengan tipografi ekspresif, visual cahaya sinematik, dan navigasi yang ringkas.</p><div className="tech-tags"><span>Company profile</span><span>Visual production</span><span>Branding</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
             </a>
-            <a className="project-card" href="https://migastraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Migas Training">
-              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Migas Training">
-                <Image src="/project-reference-migas.png" alt="" aria-hidden="true" width={1458} height={713} />
+            <a className="project-card" href="https://jeepfuntripmerapi.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jeep Funtrip Merapi">
+              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jeep Funtrip Merapi">
+                <Image src="/project-reference-jeepfuntrip.png" alt="" aria-hidden="true" width={1472} height={705} />
               </div>
-              <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">WISATA | JELAJAH MERAPI</span><h3>Jeep Funtrip Merapi - Website wisata</h3><p>Referensi website wisata dengan paket jeep, galeri perjalanan, artikel, pilihan destinasi, dan pemesanan melalui WhatsApp.</p><div className="tech-tags"><span>Paket wisata</span><span>Multibahasa</span><span>Booking WhatsApp</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
             </a>
-            <a className="project-card" href="https://jogprotraining.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogpro Training Center">
-              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogpro Training Center">
-                <Image src="/project-reference-jogpro.png" alt="" aria-hidden="true" width={1457} height={702} />
+            <a className="project-card" href="https://pelatihandronejogja.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Indonesia Drone Training Center">
+              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Indonesia Drone Training Center">
+                <Image src="/project-reference-idtc.png" alt="" aria-hidden="true" width={1377} height={701} />
               </div>
-              <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN | TEKNOLOGI DRONE</span><h3>IDTC - Pusat pelatihan drone</h3><p>Referensi website pelatihan drone profesional yang menampilkan program keselamatan penerbangan, fotogrametri dan pemetaan, serta dokumentasi udara di Yogyakarta.</p><div className="tech-tags"><span>Pelatihan drone</span><span>Fotogrametri</span><span>Dokumentasi udara</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
             </a>
           </div>
+          <details className="project-more">
+            <summary className="project-more-toggle">
+              <span className="project-more-label project-more-label-closed">Lihat semua referensi</span>
+              <span className="project-more-label project-more-label-open">Tutup referensi</span>
+              <ArrowDown size={16} aria-hidden="true" />
+            </summary>
+            <div className="project-grid project-grid-extra">
+              <a className="project-card" href="https://migastraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Migas Training">
+                <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Migas Training">
+                  <Image src="/project-reference-migas.png" alt="" aria-hidden="true" width={1458} height={713} />
+                </div>
+                <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              </a>
+              <a className="project-card" href="https://jogprotraining.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogpro Training Center">
+                <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogpro Training Center">
+                  <Image src="/project-reference-jogpro.png" alt="" aria-hidden="true" width={1457} height={702} />
+                </div>
+                <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              </a>
+            </div>
+          </details>
         </section>
 
         <section className="faq-section section" id="faq" aria-labelledby="faq-title">
@@ -217,8 +241,18 @@ export default function HomePage() {
               <div className="contact-intro"><h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2><a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">Konsultasi via WhatsApp <ArrowUpRight size={17} /></a><p>Ceritakan kebutuhan website Anda. Tim JCP siap membantu merencanakannya.</p></div>
               <div className="contact-details-panel">
                 <div className="contact-map-wrap">
-                  <div className="contact-map-heading"><span>Lokasi kami</span><a className="text-link" href="https://maps.app.goo.gl/dxHBpge1sCeYmigX8" target="_blank" rel="noreferrer">Buka peta <ArrowUpRight size={16} /></a></div>
-                  <iframe className="contact-map" title="Peta lokasi Jogja Creative Production" src="https://maps.google.com/maps?q=-7.7304157%2C110.3609453&z=16&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+                  <div className="contact-map-heading">
+                    <div className="contact-map-heading-copy">
+                      <span className="contact-map-eyebrow">LOKASI KAMI</span>
+                      <h3>Jogja Creative Production</h3>
+                      <p>Yogyakarta, Indonesia</p>
+                    </div>
+                    <a className="contact-map-link" href="https://maps.app.goo.gl/dxHBpge1sCeYmigX8" target="_blank" rel="noreferrer">Buka peta <ArrowUpRight size={15} /></a>
+                  </div>
+                  <div className="contact-map-frame">
+                    <span className="contact-map-badge"><MapPin size={14} /> Studio JCP</span>
+                    <iframe className="contact-map" title="Peta lokasi Jogja Creative Production" src="https://maps.google.com/maps?q=-7.7304157%2C110.3609453&z=16&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+                  </div>
                 </div>
               </div>
             </div>
