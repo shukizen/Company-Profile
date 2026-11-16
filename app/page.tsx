@@ -14,6 +14,7 @@ import {
   Target,
 } from "lucide-react";
 import { FAQ } from "@/components/faq";
+import { Copper } from "@/components/copper";
 import { ScrollTransitions } from "@/components/scroll-transitions";
 import { SiteNav } from "@/components/site-nav";
 import { ServicesGrid } from "@/components/services-grid";
@@ -55,26 +56,26 @@ const advantages = [
   {
     number: "01",
     icon: Lightbulb,
-    title: "Dimulai dari tujuan",
-    text: "Kami memahami kebutuhan bisnis dan calon pelanggan sebelum menentukan arah website.",
+    title: "Berangkat dari Kebutuhan",
+    text: "Setiap website dirancang berdasarkan tujuan, kebutuhan, dan karakter bisnis Anda.",
   },
   {
     number: "02",
     icon: Target,
-    title: "Nyaman di semua perangkat",
-    text: "Tampilan dirancang agar tetap jelas dan mudah digunakan di ponsel, tablet, maupun komputer.",
+    title: "Optimal di Semua Perangkat",
+    text: "Tampilan responsif yang memberikan pengalaman nyaman di smartphone, tablet, maupun desktop.",
   },
   {
     number: "03",
     icon: Layers3,
-    title: "Konten mudah dipahami",
-    text: "Informasi disusun dengan rapi agar pengunjung cepat mengerti layanan yang Anda tawarkan.",
+    title: "Informasi Lebih Terstruktur",
+    text: "Konten dan navigasi disusun secara intuitif agar pengunjung mudah memahami bisnis Anda.",
   },
   {
     number: "04",
     icon: Check,
-    title: "Dukungan yang jelas",
-    text: "Anda dapat berdiskusi dengan tim kami dari perencanaan hingga website siap diluncurkan.",
+    title: "Pendampingan Profesional",
+    text: "Kami mendampingi proses pengembangan hingga website siap diluncurkan sesuai kesepakatan.",
   },
 ];
 
@@ -122,17 +123,16 @@ export default function HomePage() {
       {organizationSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationSchema }} />}
       <main id="main">
         <section className="hero wrap" id="home" aria-labelledby="hero-title">
+          <Copper className="hero-gradient" />
           <div className="hero-copy">
-            <div className="hero-badge"><span />Jasa pembuatan website · Yogyakarta</div>
-            <h1 id="hero-title">Jasa pembuatan website<br />untuk bisnis <span>yang ingin berkembang.</span></h1>
-            <p className="hero-lede">JCP merancang dan membangun website profesional—dari company profile hingga toko online—agar bisnis Anda lebih mudah dikenal dan dipercaya.</p>
+            <h1 id="hero-title">Jasa pembuatan website<br /><span>untuk bisnis yang berkembang.</span></h1>
+            <p className="hero-lede">JCP merancang company profile, landing page, toko online, dan aplikasi web yang sesuai dengan tujuan bisnis Anda.</p>
             <div className="hero-actions">
               <Link className="button" href="#contact">Ceritakan kebutuhan Anda <ArrowUpRight size={17} /></Link>
               <Link className="text-link" href="#projects">Lihat contoh website <ArrowDown size={16} /></Link>
             </div>
             <div className="hero-assurance"><span><Check size={14} /> Desain sesuai bisnis</span><span><Check size={14} /> Responsif di semua perangkat</span><span><Check size={14} /> Dari desain hingga siap tayang</span></div>
           </div>
-          <div className="hero-visual"><Image className="hero-mockup" src="/home-hero-mockup.png" alt="Mockup website JCP pada laptop dan ponsel dengan desain oranye" width={1536} height={1024} priority /></div>
         </section>
 
         <section className="intro section wrap" id="about" aria-labelledby="intro-title">
