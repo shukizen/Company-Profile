@@ -10705,7 +10705,10 @@ summary:focus-visible {
   background: linear-gradient(135deg, #040506 0%, #06245a 62%, #0047bd 100%);
 }
 
-.projects .section-head h2 span,
+.projects .section-head h2 span {
+  color: var(--palette-yellow);
+}
+
 .projects .section-head .eyebrow,
 .projects .section-summary {
   color: rgba(255, 255, 255, .92);
@@ -11374,3 +11377,75 @@ summary:focus-visible {
   border-color: #06245a;
   color: var(--palette-yellow);
 }
+
+.project-grid > .project-card > .project-info {
+  box-sizing: border-box;
+  flex: 0 0 250px;
+  height: 250px;
+  min-height: 250px;
+}
+
+.project-grid > .project-card .project-info h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.project-grid > .project-card .project-info p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+@media (max-width: 760px) {
+  .project-grid > .project-card > .project-info {
+    flex-basis: 300px;
+    height: 300px;
+    min-height: 300px;
+  }
+}
+
+.project-grid > .project-card > .project-info > div > .text-link {
+  align-self: flex-start;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid #d6e3fa;
+  border-radius: 999px;
+  background: #f1f5ff;
+  color: #06245a;
+  font-size: 12px;
+  transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.project-grid > .project-card > .project-info > div > .text-link svg {
+  color: var(--palette-blue);
+  transform: none;
+  transition: color .18s ease;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-icon {
+  background: #ffed75;
+  color: var(--palette-navy);
+  box-shadow: 0 7px 16px rgba(255, 227, 15, .2);
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-list svg {
+  background: var(--palette-yellow);
+  color: var(--palette-navy);
+}
+
+.project-grid > .project-card:hover > .project-info > div > .text-link,
+.project-grid > .project-card:focus-visible > .project-info > div > .text-link {
+  transform: translateY(-1px);
+  border-color: var(--palette-yellow);
+  background: var(--palette-yellow);
+  color: var(--palette-navy);
+}
+
+.project-grid > .project-card:hover > .project-info > div > .text-link svg,
+.project-grid > .project-card:focus-visible > .project-info > div > .text-link svg {
+  color: var(--palette-navy);
+}
+

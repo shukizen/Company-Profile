@@ -4,6 +4,8 @@ import {
   ArrowUpRight,
   Check,
   Code2,
+  ExternalLink,
+  Globe,
   MapPin,
   PanelsTopLeft,
   MessageCircle,
@@ -137,37 +139,79 @@ export default function HomePage() {
                 <Image src="/project-reference-innoasis.webp" alt="" aria-hidden="true" width={1200} height={800} />
                 <span className="concept-label">SITUS REFERENSI · INN OASIS</span>
               </div>
-              <div className="project-info"><div><span className="project-category">AKOMODASI · RESERVASI</span><h3>Inn Oasis — Website akomodasi</h3><p>Referensi website penginapan dengan pencarian properti, pilihan kamar, dukungan dua bahasa, dan ajakan untuk bertanya.</p><div className="tech-tags"><span>Pencarian properti</span><span>Multibahasa</span><span>Reservasi</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">AKOMODASI · RESERVASI</span><h3>Inn Oasis — Website akomodasi</h3><p>Referensi website penginapan dengan pencarian properti, pilihan kamar, dukungan dua bahasa, dan ajakan untuk bertanya.</p><div className="tech-tags"><span>Pencarian properti</span><span>Multibahasa</span><span>Reservasi</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
             <a className="project-card" href="https://jogjacreativepro.com/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogja Creative Production">
               <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogja Creative Production">
                 <Image src="/project-reference-jcp.png" alt="" aria-hidden="true" width={1467} height={713} />
               </div>
-              <div className="project-info"><div><span className="project-category">PRODUKSI VISUAL · BRANDING</span><h3>Jogja Creative Production — Company profile</h3><p>Referensi company profile kreatif dengan tipografi ekspresif, visual cahaya sinematik, dan navigasi yang ringkas.</p><div className="tech-tags"><span>Company profile</span><span>Visual production</span><span>Branding</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
-            </a>
-            <a className="project-card" href="https://jeepfuntripmerapi.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jeep Funtrip Merapi">
-              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jeep Funtrip Merapi">
-                <Image src="/project-reference-jeepfuntrip.png" alt="" aria-hidden="true" width={1472} height={705} />
-              </div>
-              <div className="project-info"><div><span className="project-category">WISATA | JELAJAH MERAPI</span><h3>Jeep Funtrip Merapi - Website wisata</h3><p>Referensi website wisata dengan paket jeep, galeri perjalanan, artikel, pilihan destinasi, dan pemesanan melalui WhatsApp.</p><div className="tech-tags"><span>Paket wisata</span><span>Multibahasa</span><span>Booking WhatsApp</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">PRODUKSI VISUAL · BRANDING</span><h3>Jogja Creative Production — Company profile</h3><p>Referensi company profile kreatif dengan tipografi ekspresif, visual cahaya sinematik, dan navigasi yang ringkas.</p><div className="tech-tags"><span>Company profile</span><span>Visual production</span><span>Branding</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
             <a className="project-card" href="https://pelatihandronejogja.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Indonesia Drone Training Center">
               <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Indonesia Drone Training Center">
                 <Image src="/project-reference-idtc.png" alt="" aria-hidden="true" width={1377} height={701} />
               </div>
-              <div className="project-info"><div><span className="project-category">PELATIHAN | TEKNOLOGI DRONE</span><h3>IDTC - Pusat pelatihan drone</h3><p>Referensi website pelatihan drone profesional yang menampilkan program keselamatan penerbangan, fotogrametri dan pemetaan, serta dokumentasi udara di Yogyakarta.</p><div className="tech-tags"><span>Pelatihan drone</span><span>Fotogrametri</span><span>Dokumentasi udara</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN | TEKNOLOGI DRONE</span><h3>IDTC - Pusat pelatihan drone</h3><p>Referensi website pelatihan drone profesional yang menampilkan program keselamatan penerbangan, fotogrametri dan pemetaan, serta dokumentasi udara di Yogyakarta.</p><div className="tech-tags"><span>Pelatihan drone</span><span>Fotogrametri</span><span>Dokumentasi udara</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
             <a className="project-card" href="https://migastraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Migas Training">
               <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Migas Training">
                 <Image src="/project-reference-migas.png" alt="" aria-hidden="true" width={1458} height={713} />
               </div>
-              <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
             <a className="project-card" href="https://jogprotraining.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogpro Training Center">
               <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogpro Training Center">
                 <Image src="/project-reference-jogpro.png" alt="" aria-hidden="true" width={1457} height={702} />
               </div>
-              <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://angeliaperfume.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Angelia Perfume">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs Angelia Perfume">
+                <Image src="/project-reference-angelia-perfume.png" alt="" aria-hidden="true" width={1472} height={712} />
+              </div>
+              <div className="project-info"><div><span className="project-category">TOKO ONLINE | PARFUM</span><h3>Angelia Perfume — Toko parfum online</h3><p>Referensi toko parfum dengan pilihan decant dan full size, katalog merek, pencarian produk, dan alur belanja.</p><div className="tech-tags"><span>Decant &amp; full size</span><span>Katalog parfum</span><span>Pencarian produk</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://hillsisleman.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs HILLSI Sleman">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs HILLSI Sleman">
+                <Image src="/project-reference-hillsi-sleman.png" alt="" aria-hidden="true" width={1477} height={715} />
+              </div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN KERJA | SLEMAN</span><h3>HILLSI Sleman — Platform pelatihan kerja</h3><p>Referensi platform lembaga pelatihan kerja dengan pencarian kelas, kategori pelatihan, dan informasi koordinasi LPK di Kabupaten Sleman.</p><div className="tech-tags"><span>Pencarian pelatihan</span><span>Kategori kelas</span><span>Info LPK</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://jcpdigitaltraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs JCP Digital Training">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs JCP Digital Training">
+                <Image src="/project-reference-jcp-digital-training.png" alt="" aria-hidden="true" width={1476} height={710} />
+              </div>
+              <div className="project-info"><div><span className="project-category">EDUKASI | PELATIHAN DIGITAL</span><h3>JCP Digital Training — Platform pelatihan</h3><p>Referensi platform pelatihan dengan pencarian kelas, jadwal, in-house training, galeri kegiatan, dan pendaftaran peserta.</p><div className="tech-tags"><span>Pelatihan digital</span><span>Jadwal kelas</span><span>Pendaftaran online</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://umkmkepuharjo.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs FORKOM UMKM Kepuharjo">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs FORKOM UMKM Kepuharjo">
+                <Image src="/project-reference-umkm-kepuharjo.png" alt="" aria-hidden="true" width={1480} height={715} />
+              </div>
+              <div className="project-info"><div><span className="project-category">UMKM | KATALOG PRODUK</span><h3>FORKOM UMKM Kepuharjo — Direktori UMKM</h3><p>Referensi website komunitas UMKM dengan katalog produk dan layanan lokal, kategori usaha, serta informasi pelaku UMKM Kepuharjo.</p><div className="tech-tags"><span>Katalog produk</span><span>Kategori usaha</span><span>Profil UMKM</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://kagamadigi.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Kagama Digi">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs Kagama Digi">
+                <Image src="/project-reference-kagama-digi.png" alt="" aria-hidden="true" width={1472} height={712} />
+              </div>
+              <div className="project-info"><div><span className="project-category">KOMUNITAS DIGITAL | INOVASI</span><h3>Kagama Digi — Website komunitas digital</h3><p>Referensi website komunitas alumni dengan program, dokumentasi kegiatan, struktur pengurus, dan pendaftaran anggota.</p><div className="tech-tags"><span>Komunitas digital</span><span>Program &amp; kegiatan</span><span>Profil pengurus</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://jogjaaisolutions.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogja AI Solutions">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs Jogja AI Solutions">
+                <Image src="/project-reference-jogja-ai-solutions.png" alt="" aria-hidden="true" width={1462} height={702} />
+              </div>
+              <div className="project-info"><div><span className="project-category">TEKNOLOGI | SOLUSI AI</span><h3>Jogja AI Solutions — Layanan AI</h3><p>Referensi website layanan AI dengan visual digital yang kuat, ringkasan manfaat, akses ke layanan, dan ajakan konsultasi.</p><div className="tech-tags"><span>Layanan AI</span><span>Produktivitas</span><span>Konsultasi</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://kopkamenwagama.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Koperasi Alumni Menwa UGM">
+              <div className="project-art project-art-reference" role="img" aria-label="Pratinjau situs Koperasi Alumni Menwa UGM">
+                <Image src="/project-reference-kopkamenwagama.png" alt="" aria-hidden="true" width={1475} height={710} />
+              </div>
+              <div className="project-info"><div><span className="project-category">KOPERASI | ALUMNI UGM</span><h3>Kopkamenwagama — Koperasi Alumni Menwa UGM</h3><p>Referensi etalase koperasi untuk menemukan barang dan jasa, dengan pencarian produk, akses layanan, dan pendaftaran anggota.</p><div className="tech-tags"><span>Katalog barang &amp; jasa</span><span>Pemesanan online</span><span>Layanan anggota</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
+            </a>
+            <a className="project-card" href="https://jeepfuntripmerapi.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jeep Funtrip Merapi">
+              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jeep Funtrip Merapi">
+                <Image src="/project-reference-jeepfuntrip.png" alt="" aria-hidden="true" width={1472} height={705} />
+              </div>
+              <div className="project-info"><div><span className="project-category">WISATA | JELAJAH MERAPI</span><h3>Jeep Funtrip Merapi - Website wisata</h3><p>Referensi website wisata dengan paket jeep, galeri perjalanan, artikel, pilihan destinasi, dan pemesanan melalui WhatsApp.</p><div className="tech-tags"><span>Paket wisata</span><span>Multibahasa</span><span>Booking WhatsApp</span></div><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
           </ProjectCarousel>
 
