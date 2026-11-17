@@ -11383,6 +11383,7 @@ summary:focus-visible {
   flex: 0 0 250px;
   height: 250px;
   min-height: 250px;
+  border-top: 2px solid #d6e3fa;
 }
 
 .project-grid > .project-card .project-info h3 {
@@ -11423,6 +11424,38 @@ summary:focus-visible {
   color: var(--palette-blue);
   transform: none;
   transition: color .18s ease;
+}
+
+.footer-contact-link svg {
+  flex: 0 0 auto;
+}
+
+.footer-contact-link {
+  align-items: flex-start;
+}
+
+.footer-contact-link .whatsapp-mark {
+  width: 15px;
+  height: 15px;
+}
+
+.footer-contact-link[href^="mailto:"] {
+  white-space: nowrap;
+  font-size: 9.5px;
+}
+
+@media (max-width: 760px) {
+  .footer {
+    background: linear-gradient(to bottom, #06245a 0 120px, #040506 120px);
+  }
+
+  .footer-locale {
+    grid-column: 1 / -1;
+  }
+
+  .footer-contact-link[href^="mailto:"] {
+    font-size: 10px;
+  }
 }
 
 .service-cards .service-card:not(:hover):not(:focus-visible) .service-card-icon {

@@ -6,6 +6,7 @@ import {
   Code2,
   ExternalLink,
   Globe,
+  Mail,
   MapPin,
   PanelsTopLeft,
   MessageCircle,
@@ -75,6 +76,15 @@ const workSteps = [
 ];
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+
+function WhatsAppMark({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 448 512" aria-hidden="true">
+      <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 1.9 131.6 1.9 254c0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.2 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.4-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.8 81.2 56.8 130.5-.1 101.8-86.8 184.6-187.3 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-1.9 2.8-4.2 4.2-6.5 1.4-2.3.5-4.4-.2-6.5-.7-2.1-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.1-1.5 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.4-5-3.8-10.5-6.6z" />
+    </svg>
+  );
+}
+
 const organizationSchema = siteUrl
   ? JSON.stringify({
     "@context": "https://schema.org",
@@ -227,7 +237,7 @@ export default function HomePage() {
         <section className="contact section" id="contact" aria-labelledby="contact-title">
           <div className="wrap">
             <div className="contact-card">
-              <div className="contact-intro"><h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2><a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer"><svg className="whatsapp-mark" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 1.9 131.6 1.9 254c0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.2 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.4-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.8 81.2 56.8 130.5-.1 101.8-86.8 184.6-187.3 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-1.9 2.8-4.2 4.2-6.5 1.4-2.3.5-4.4-.2-6.5-.7-2.1-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.1-1.5 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.4-5-3.8-10.5-6.6z" /></svg>Konsultasi via WhatsApp <ArrowUpRight size={17} /></a><p>Ceritakan kebutuhan website Anda. Tim JCPWebSolutions siap membantu merencanakannya.</p></div>
+              <div className="contact-intro"><h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2><a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer"><WhatsAppMark className="whatsapp-mark" />Konsultasi via WhatsApp <ArrowUpRight size={17} /></a><p>Ceritakan kebutuhan website Anda. Tim JCPWebSolutions siap membantu merencanakannya.</p></div>
               <div className="contact-details-panel">
                 <div className="contact-map-wrap">
                   <div className="contact-map-heading">
@@ -256,12 +266,12 @@ export default function HomePage() {
         </svg>
         <div className="wrap">
           <div className="footer-main">
-              <div className="footer-brand"><a className="brand" href="#home" aria-label="Beranda JCPWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark"><strong>JCP</strong>WebSolutions</span></a><p>Jasa pembuatan website profesional untuk bisnis.</p></div>
-            <div className="footer-col"><span>JELAJAHI</span><a href="#services">Layanan</a><a href="#projects">Contoh website</a><a href="#faq">Pertanyaan umum</a></div>
-            <div className="footer-col"><span>LAYANAN KAMI</span><a href="#services">Website company profile</a><a href="#services">Landing page</a><a href="#services">Toko online</a><a href="#services">Aplikasi web</a></div>
-            <div className="footer-locale"><span>MARI TERHUBUNG</span><p>Ceritakan potensi ide Anda.</p><a className="footer-contact-link" href="mailto:jogjacreativeproduction@gmail.com">jogjacreativeproduction@gmail.com</a><a className="footer-contact-link" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">WhatsApp +62 856-0060-4388</a><a className="footer-contact-link" href="#contact">Mulai percakapan <ArrowUpRight size={15} /></a></div>
+              <div className="footer-brand"><a className="brand" href="#home" aria-label="Beranda JCPWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark"><strong>JCP</strong>WebSolutions</span></a><p>Website untuk kebutuhan dan tujuan bisnis Anda.</p></div>
+            <div className="footer-col"><span>NAVIGASI</span><a href="#home">Beranda</a><a href="#services">Layanan</a><a href="#projects">Portofolio website</a><a href="#faq">FAQ</a></div>
+            <div className="footer-col"><span>JENIS WEBSITE</span><a href="#services">Company profile</a><a href="#services">Landing page promosi</a><a href="#services">Toko online</a><a href="#services">Booking &amp; reservasi</a><a href="#services">Website portofolio</a><a href="#services">Website custom</a></div>
+            <div className="footer-locale"><span>HUBUNGI KAMI</span><p>Diskusikan kebutuhan website Anda bersama tim kami.</p><a className="footer-contact-link" href="mailto:jogjacreativeproduction@gmail.com"><Mail size={15} aria-hidden="true" />jogjacreativeproduction@gmail.com</a><a className="footer-contact-link" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer"><WhatsAppMark className="whatsapp-mark" />WhatsApp +62 856-0060-4388</a><a className="footer-contact-link" href="#contact">Konsultasi website <ArrowUpRight size={15} /></a></div>
           </div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} PT Jogja Creative Production</span><span>JASA PEMBUATAN WEBSITE · YOGYAKARTA</span><a href="#home">Kembali ke atas ↑</a></div>
+          <div className="footer-bottom"><span>© {new Date().getFullYear()} PT Jogja Creative Production</span><span>JCPWebSolutions · Yogyakarta</span><a href="#home">Kembali ke atas ↑</a></div>
         </div>
       </footer>
     </>
