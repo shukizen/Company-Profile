@@ -9,8 +9,10 @@ services:
       NODE_ENV: production
       PORT: 3000
       HOSTNAME: 0.0.0.0
-    ports:
-      - "127.0.0.1:3012:3000"
+    expose:
+      - "3000"
+    networks:
+      - caddy
     restart: unless-stopped
     healthcheck:
       test:
@@ -22,3 +24,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+
+networks:
+  caddy:
+    external: true
+    name: n8n_default
