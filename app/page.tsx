@@ -212,7 +212,7 @@ export default function HomePage() {
         </svg>
         <div className="wrap">
           <div className="footer-main">
-              <div className="footer-brand"><a className="brand" href="#home" aria-label="Beranda JogjaWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark">JogjaWebSolutions</span></a><p>Jasa pembuatan website profesional untuk bisnis.</p></div>
+              <div className="footer-brand"><a className="brand" href="#home" aria-label="Beranda JCPWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark"><strong>JCP</strong>WebSolutions</span></a><p>Jasa pembuatan website profesional untuk bisnis.</p></div>
             <div className="footer-col"><span>JELAJAHI</span><a href="#services">Layanan</a><a href="#projects">Contoh website</a><a href="#faq">Pertanyaan umum</a></div>
             <div className="footer-col"><span>LAYANAN KAMI</span><a href="#services">Website company profile</a><a href="#services">Landing page</a><a href="#services">Toko online</a><a href="#services">Aplikasi web</a></div>
             <div className="footer-locale"><span>MARI TERHUBUNG</span><p>Ceritakan potensi ide Anda.</p><a className="footer-contact-link" href="mailto:jogjacreativeproduction@gmail.com">jogjacreativeproduction@gmail.com</a><a className="footer-contact-link" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">WhatsApp +62 856-0060-4388</a><a className="footer-contact-link" href="#contact">Mulai percakapan <ArrowUpRight size={15} /></a></div>
