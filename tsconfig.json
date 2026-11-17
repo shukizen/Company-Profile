@@ -31,8 +31,13 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "lib/utils.ts",
+    "lib/gradient-engine/**/*.ts",
+    "next.config.ts",
     "generated/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
