@@ -11213,3 +11213,146 @@ summary:focus-visible {
     font-size: 14px;
   }
 }
+
+.hero .hero-actions .text-link {
+  transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.hero .hero-actions .text-link:hover,
+.hero .hero-actions .text-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--palette-yellow);
+  background: var(--palette-yellow);
+  color: var(--palette-navy);
+  box-shadow: 0 10px 26px rgba(255, 227, 15, .24);
+  text-shadow: none;
+}
+
+.hero .hero-actions .text-link:hover svg,
+.hero .hero-actions .text-link:focus-visible svg {
+  color: var(--palette-navy);
+  filter: none;
+}
+
+.hero .hero-actions .text-link:active {
+  transform: translateY(0);
+}
+
+.contact-cta .whatsapp-mark {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+}
+
+.faq-section .faq-item > p {
+  color: #344255;
+}
+
+.site-header #nav-links > .button,
+.site-header.is-scrolled #nav-links > .button {
+  border-color: var(--palette-yellow);
+  background: var(--palette-yellow);
+  color: #06245a;
+  box-shadow: 0 6px 18px rgba(255, 227, 15, .18);
+}
+
+.site-header #nav-links > .button:hover,
+.site-header #nav-links > .button:focus-visible,
+.site-header.is-scrolled #nav-links > .button:hover,
+.site-header.is-scrolled #nav-links > .button:focus-visible {
+  border-color: var(--palette-yellow);
+  background: #fff;
+  color: var(--palette-blue);
+}
+
+.contact {
+  background: #06245a;
+  color: #fff;
+}
+
+.contact::after {
+  background: none;
+}
+
+.contact .contact-intro h2 {
+  color: #fff;
+}
+
+.contact .contact-intro h2 span {
+  color: var(--palette-yellow);
+}
+
+.contact .contact-intro > p:not(.eyebrow) {
+  color: rgba(255, 255, 255, .82);
+}
+
+.contact .contact-cta {
+  border-color: var(--palette-yellow);
+  background: var(--palette-yellow);
+  color: var(--palette-navy);
+}
+
+.contact .contact-cta:hover,
+.contact .contact-cta:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: var(--palette-blue);
+}
+
+.footer {
+  background: linear-gradient(to bottom, #06245a 0 175px, #040506 175px);
+}
+
+.service-cards .service-card:hover,
+.service-cards .service-card:focus-visible {
+  border-color: #06245a;
+  background: #06245a;
+  box-shadow: 0 16px 34px rgba(6, 36, 90, .22);
+}
+
+.service-cards .service-card {
+  border-color: #d6e3fa;
+  background: linear-gradient(145deg, #fff 0%, #f4f7ff 100%);
+  box-shadow: 0 14px 30px rgba(6, 36, 90, .08);
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-number,
+.service-cards .service-card:not(:hover):not(:focus-visible) h3,
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-cta {
+  color: #06245a;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-number span {
+  color: #52627a;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-description,
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-list {
+  color: #41516a;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-icon {
+  background: #e8efff;
+  color: #0047bd;
+  box-shadow: 0 7px 16px rgba(0, 71, 189, .12);
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-list svg {
+  background: #fff3a6;
+  color: #06245a;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-cta {
+  border-top-color: #d6e3fa;
+}
+
+.service-cards .service-card:not(:hover):not(:focus-visible) .service-card-cta svg {
+  background: #e8efff;
+  color: #0047bd;
+}
+
+.service-cards .service-card:hover .service-card-number span,
+.service-cards .service-card:focus-visible .service-card-number span {
+  background: transparent;
+  color: var(--palette-yellow);
+}

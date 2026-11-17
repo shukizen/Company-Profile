@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { MessageCircle, Menu, X } from "lucide-react";
 
 const links = [
   ["Beranda", "#home"],
@@ -26,10 +25,10 @@ export function SiteNav() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <nav className={`nav wrap${scrolled ? " is-scrolled" : ""}`} aria-label="Navigasi utama">
-        <Link className="brand" href="#home" aria-label="Beranda JCPWebSolutions">
+        <a className="brand" href="#home" aria-label="Beranda JCPWebSolutions">
           <Image className="brand-logo" src="/logo.png" alt="JCPWebSolutions" width={112} height={70} />
           <span className="brand-wordmark"><strong>JCP</strong>WebSolutions</span>
-        </Link>
+        </a>
         <button
           className="menu-toggle"
           type="button"
@@ -42,13 +41,13 @@ export function SiteNav() {
         </button>
         <div className={`nav-links${open ? " is-open" : ""}`} id="nav-links">
           {links.map(([label, href]) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)}>
+            <a key={href} href={href} onClick={() => setOpen(false)}>
               {label}
-            </Link>
+            </a>
           ))}
-          <Link className="button button-small" href="#contact" onClick={() => setOpen(false)}>
-            Konsultasi website <ArrowUpRight size={16} />
-          </Link>
+          <a className="button button-small" href="#contact" onClick={() => setOpen(false)}>
+            Konsultasi Website <MessageCircle size={16} aria-hidden="true" />
+          </a>
         </div>
       </nav>
     </header>
