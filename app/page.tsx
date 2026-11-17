@@ -5,16 +5,14 @@ import {
   ArrowUpRight,
   Check,
   Code2,
-  Layers3,
-  Lightbulb,
   MapPin,
   PanelsTopLeft,
   MessageCircle,
   Rocket,
-  Target,
 } from "lucide-react";
 import { FAQ } from "@/components/faq";
-import { Copper } from "@/components/copper";
+import { Mercury } from "@/components/mercury";
+import { ProjectCarousel } from "@/components/project-carousel";
 import { ScrollTransitions } from "@/components/scroll-transitions";
 import { SiteNav } from "@/components/site-nav";
 import { ServicesGrid } from "@/components/services-grid";
@@ -36,9 +34,9 @@ const services = [
     examples: ["Katalog dan detail produk", "Keranjang atau formulir pesanan", "Pembayaran sesuai kebutuhan", "Informasi pengiriman"],
   },
   {
-    title: "Aplikasi Web Khusus",
-    description: "Sistem berbasis web yang dibangun mengikuti proses kerja dan kebutuhan operasional bisnis Anda.",
-    examples: ["Dashboard dan laporan", "Sistem pemesanan", "Portal pelanggan", "Aplikasi internal"],
+    title: "Website Booking & Reservasi",
+    description: "Website yang memudahkan pelanggan melihat ketersediaan layanan dan mengajukan pemesanan secara online.",
+    examples: ["Jadwal dan ketersediaan", "Form pemesanan", "Konfirmasi reservasi", "Informasi layanan"],
   },
   {
     title: "Website Portofolio",
@@ -46,36 +44,9 @@ const services = [
     examples: ["Galeri proyek", "Profil dan keahlian", "Testimoni klien", "Kontak profesional"],
   },
   {
-    title: "Website Booking & Reservasi",
-    description: "Website yang memudahkan pelanggan melihat ketersediaan layanan dan mengajukan pemesanan secara online.",
-    examples: ["Jadwal dan ketersediaan", "Form pemesanan", "Konfirmasi reservasi", "Informasi layanan"],
-  },
-];
-
-const advantages = [
-  {
-    number: "01",
-    icon: Lightbulb,
-    title: "Berangkat dari Kebutuhan",
-    text: "Setiap website dirancang berdasarkan tujuan, kebutuhan, dan karakter bisnis Anda.",
-  },
-  {
-    number: "02",
-    icon: Target,
-    title: "Optimal di Semua Perangkat",
-    text: "Tampilan responsif yang memberikan pengalaman nyaman di smartphone, tablet, maupun desktop.",
-  },
-  {
-    number: "03",
-    icon: Layers3,
-    title: "Informasi Lebih Terstruktur",
-    text: "Konten dan navigasi disusun secara intuitif agar pengunjung mudah memahami bisnis Anda.",
-  },
-  {
-    number: "04",
-    icon: Check,
-    title: "Pendampingan Profesional",
-    text: "Kami mendampingi proses pengembangan hingga website siap diluncurkan sesuai kesepakatan.",
+    title: "Website Custom",
+    description: "Website yang dirancang dan dikembangkan sesuai tujuan, kebutuhan, dan alur bisnis Anda.",
+    examples: ["Tampilan sesuai identitas bisnis", "Halaman sesuai kebutuhan", "Fitur yang disepakati", "Integrasi sesuai kebutuhan"],
   },
 ];
 
@@ -108,9 +79,9 @@ const organizationSchema = siteUrl
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "PT Jogja Creative Production",
-    alternateName: "JCP — Jasa Pembuatan Website",
+    alternateName: "JCPWebSolutions — Jasa Pembuatan Website",
     url: siteUrl,
-    logo: `${siteUrl}/jcp-logo.svg`,
+    logo: `${siteUrl}/logo.png`,
   }).replace(/</g, "\\u003c")
   : null;
 
@@ -123,31 +94,14 @@ export default function HomePage() {
       {organizationSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationSchema }} />}
       <main id="main">
         <section className="hero wrap" id="home" aria-labelledby="hero-title">
-          <Copper className="hero-gradient" />
+          <Mercury className="hero-gradient" />
           <div className="hero-copy">
-            <h1 id="hero-title">Jasa pembuatan website<br /><span>untuk bisnis yang berkembang.</span></h1>
-            <p className="hero-lede">JCP merancang company profile, landing page, toko online, dan aplikasi web yang sesuai dengan tujuan bisnis Anda.</p>
+            <h1 id="hero-title">Website Bisnis Anda<br /><span>Lebih Berkembang</span></h1>
+            <p className="hero-lede">JCPWebSolutions merancang company profile, landing page, toko online, dan aplikasi web yang sesuai dengan tujuan bisnis Anda.</p>
             <div className="hero-actions">
-              <Link className="button" href="#contact">Ceritakan kebutuhan Anda <ArrowUpRight size={17} /></Link>
               <Link className="text-link" href="#projects">Lihat contoh website <ArrowDown size={16} /></Link>
             </div>
             <div className="hero-assurance"><span><Check size={14} /> Desain sesuai bisnis</span><span><Check size={14} /> Responsif di semua perangkat</span><span><Check size={14} /> Dari desain hingga siap tayang</span></div>
-          </div>
-        </section>
-
-        <section className="intro section wrap" id="about" aria-labelledby="intro-title">
-          <div className="intro-layout">
-            <div><h2 id="intro-title">Website membantu bisnis <span>lebih dikenal dan dipercaya.</span></h2></div>
-            <div className="intro-copy">
-              <p>Website menjadi pusat informasi resmi bisnis Anda. Calon pelanggan dapat mengenal usaha, memahami layanan atau produk, melihat keunggulan, dan menemukan cara menghubungi Anda kapan saja.</p>
-              <p>Kami merancang website untuk membangun kredibilitas, menjangkau calon pelanggan lebih luas, dan membuka peluang bisnis. Setiap halaman disusun sesuai tujuan Anda—mulai dari company profile dan landing page hingga toko online dan aplikasi web.</p>
-              <a className="text-link" href="#services">Pilih layanan website <ArrowUpRight size={16} /></a>
-            </div>
-          </div>
-          <div className="advantage-grid" id="why-jcp" role="group" aria-label="Prinsip kerja JCP">
-            {advantages.map(({ number, icon: Icon, title, text }) => (
-              <article className="advantage" key={title}><span className="advantage-number">{number}</span><span className="advantage-icon"><Icon size={21} strokeWidth={1.6} /></span><h3>{title}</h3><p>{text}</p></article>
-            ))}
           </div>
         </section>
 
@@ -178,7 +132,7 @@ export default function HomePage() {
             <div className="section-head-main"><p className="eyebrow">REFERENSI WEBSITE</p><h2 id="projects-title">Lihat inspirasi website<br /><span>untuk bisnis Anda.</span></h2></div>
             <p className="section-summary">Contoh situs nyata ini menunjukkan berbagai arah desain. Struktur, fitur, dan tampilannya dapat menjadi inspirasi yang disesuaikan dengan kebutuhan bisnis Anda.</p>
           </div>
-          <div className="project-grid">
+          <ProjectCarousel>
             <a className="project-card" href="https://innoasisstay.com/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Inn Oasis Accommodation">
               <div className="project-art project-art-reference" aria-label="Referensi halaman utama Inn Oasis Accommodation" role="img">
                 <Image src="/project-reference-innoasis.webp" alt="" aria-hidden="true" width={1200} height={800} />
@@ -204,28 +158,20 @@ export default function HomePage() {
               </div>
               <div className="project-info"><div><span className="project-category">PELATIHAN | TEKNOLOGI DRONE</span><h3>IDTC - Pusat pelatihan drone</h3><p>Referensi website pelatihan drone profesional yang menampilkan program keselamatan penerbangan, fotogrametri dan pemetaan, serta dokumentasi udara di Yogyakarta.</p><div className="tech-tags"><span>Pelatihan drone</span><span>Fotogrametri</span><span>Dokumentasi udara</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
             </a>
-          </div>
-          <details className="project-more">
-            <summary className="project-more-toggle">
-              <span className="project-more-label project-more-label-closed">Lihat semua referensi</span>
-              <span className="project-more-label project-more-label-open">Tutup referensi</span>
-              <ArrowDown size={16} aria-hidden="true" />
-            </summary>
-            <div className="project-grid project-grid-extra">
-              <a className="project-card" href="https://migastraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Migas Training">
-                <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Migas Training">
-                  <Image src="/project-reference-migas.png" alt="" aria-hidden="true" width={1458} height={713} />
-                </div>
-                <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
-              </a>
-              <a className="project-card" href="https://jogprotraining.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogpro Training Center">
-                <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogpro Training Center">
-                  <Image src="/project-reference-jogpro.png" alt="" aria-hidden="true" width={1457} height={702} />
-                </div>
-                <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
-              </a>
-            </div>
-          </details>
+            <a className="project-card" href="https://migastraining.duckdns.org/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Migas Training">
+              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Migas Training">
+                <Image src="/project-reference-migas.png" alt="" aria-hidden="true" width={1458} height={713} />
+              </div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN · MINYAK &amp; GAS</span><h3>Migas Training — Portal pelatihan</h3><p>Referensi portal pelatihan profesional dengan navigasi program, layanan reliability, dan ajakan pendaftaran yang jelas.</p><div className="tech-tags"><span>Portal pelatihan</span><span>Program kursus</span><span>Oil &amp; gas</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+            </a>
+            <a className="project-card" href="https://jogprotraining.my.id/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Jogpro Training Center">
+              <div className="project-art project-art-reference" role="img" aria-label="Screenshot beranda Jogpro Training Center">
+                <Image src="/project-reference-jogpro.png" alt="" aria-hidden="true" width={1457} height={702} />
+              </div>
+              <div className="project-info"><div><span className="project-category">PELATIHAN · PENGEMBANGAN SDM</span><h3>Jogpro Training Center — Katalog pelatihan</h3><p>Referensi situs training provider dengan pencarian pelatihan, jadwal kelas, dan akses cepat ke pembayaran.</p><div className="tech-tags"><span>Katalog pelatihan</span><span>Jadwal training</span><span>Pencarian</span></div><span className="text-link">Kunjungi website <ArrowUpRight size={16} /></span></div><span className="project-arrow"><ArrowUpRight size={19} /></span></div>
+            </a>
+          </ProjectCarousel>
+
         </section>
 
         <section className="faq-section section" id="faq" aria-labelledby="faq-title">
@@ -238,7 +184,7 @@ export default function HomePage() {
         <section className="contact section" id="contact" aria-labelledby="contact-title">
           <div className="wrap">
             <div className="contact-card">
-              <div className="contact-intro"><h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2><a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">Konsultasi via WhatsApp <ArrowUpRight size={17} /></a><p>Ceritakan kebutuhan website Anda. Tim JCP siap membantu merencanakannya.</p></div>
+              <div className="contact-intro"><h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2><a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">Konsultasi via WhatsApp <ArrowUpRight size={17} /></a><p>Ceritakan kebutuhan website Anda. Tim JCPWebSolutions siap membantu merencanakannya.</p></div>
               <div className="contact-details-panel">
                 <div className="contact-map-wrap">
                   <div className="contact-map-heading">
@@ -250,7 +196,7 @@ export default function HomePage() {
                     <a className="contact-map-link" href="https://maps.app.goo.gl/dxHBpge1sCeYmigX8" target="_blank" rel="noreferrer">Buka peta <ArrowUpRight size={15} /></a>
                   </div>
                   <div className="contact-map-frame">
-                    <span className="contact-map-badge"><MapPin size={14} /> Studio JCP</span>
+                    <span className="contact-map-badge"><MapPin size={14} /> Studio JCPWebSolutions</span>
                     <iframe className="contact-map" title="Peta lokasi Jogja Creative Production" src="https://maps.google.com/maps?q=-7.7304157%2C110.3609453&z=16&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
                   </div>
                 </div>
@@ -260,10 +206,15 @@ export default function HomePage() {
         </section>
       </main>
       <footer className="footer">
+        <svg className="footer-wave" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+          <path fill="#FFE30F" d="M0 30 C150 4 235 23 350 48 C480 78 570 88 690 65 C815 42 890 14 1010 8 C1125 3 1170 29 1285 23 C1350 19 1395 12 1440 17 L1440 31 C1395 26 1350 33 1285 37 C1170 43 1125 17 1010 22 C890 28 815 56 690 79 C570 102 480 92 350 62 C235 37 150 18 0 44 Z" />
+          <path fill="#0047BD" d="M0 44 C150 18 235 37 350 62 C480 92 570 102 690 79 C815 56 890 28 1010 22 C1125 17 1170 43 1285 37 C1350 33 1395 26 1440 31 L1440 45 C1395 40 1350 47 1285 51 C1170 57 1125 31 1010 36 C890 42 815 70 690 93 C570 116 480 106 350 76 C235 51 150 32 0 58 Z" />
+          <path fill="#040506" d="M0 58 C150 32 235 51 350 76 C480 106 570 116 690 93 C815 70 890 42 1010 36 C1125 31 1170 57 1285 51 C1350 47 1395 40 1440 45 V190 H0 Z" />
+        </svg>
         <div className="wrap">
           <div className="footer-main">
-            <div className="footer-brand"><Link href="#home" aria-label="Beranda JCP"><Image src="/jcp-logo.svg" alt="JCP — Jogja Creative Production" width={124} height={74} /></Link><p>Jasa pembuatan website profesional untuk bisnis.</p></div>
-            <div className="footer-col"><span>JELAJAHI</span><Link href="#about">Tentang JCP</Link><Link href="#services">Layanan</Link><Link href="#projects">Contoh website</Link><Link href="#faq">Pertanyaan umum</Link></div>
+            <div className="footer-brand"><Link className="brand" href="#home" aria-label="Beranda JogjaWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark">JogjaWebSolutions</span></Link><p>Jasa pembuatan website profesional untuk bisnis.</p></div>
+            <div className="footer-col"><span>JELAJAHI</span><Link href="#services">Layanan</Link><Link href="#projects">Contoh website</Link><Link href="#faq">Pertanyaan umum</Link></div>
             <div className="footer-col"><span>LAYANAN KAMI</span><Link href="#services">Website company profile</Link><Link href="#services">Landing page</Link><Link href="#services">Toko online</Link><Link href="#services">Aplikasi web</Link></div>
             <div className="footer-locale"><span>MARI TERHUBUNG</span><p>Ceritakan potensi ide Anda.</p><a className="footer-contact-link" href="mailto:jogjacreativeproduction@gmail.com">jogjacreativeproduction@gmail.com</a><a className="footer-contact-link" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">WhatsApp +62 856-0060-4388</a><Link className="footer-contact-link" href="#contact">Mulai percakapan <ArrowUpRight size={15} /></Link></div>
           </div>

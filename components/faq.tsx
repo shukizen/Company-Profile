@@ -2,12 +2,12 @@ import { ChevronDown } from "lucide-react";
 
 const items = [
   {
-    question: "Website seperti apa yang bisa dibuat JCP?",
+    question: "Website seperti apa yang bisa dibuat JCPWebSolutions?",
     answer:
       "Kami mengerjakan website company profile, landing page, toko online, dan aplikasi web. Jenis website serta fitur akan disesuaikan dengan kebutuhan bisnis Anda.",
   },
   {
-    question: "Apakah JCP melayani UMKM dan bisnis kecil?",
+    question: "Apakah JCPWebSolutions melayani UMKM dan bisnis kecil?",
     answer:
       "Ya. Kami terbuka untuk berdiskusi dengan UMKM, bisnis, organisasi, maupun individu yang membutuhkan website.",
   },

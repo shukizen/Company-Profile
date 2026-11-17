@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const links = [
   ["Beranda", "#home"],
-  ["Tentang", "#about"],
   ["Layanan", "#services"],
   ["Contoh Website", "#projects"],
   ["Kontak", "#contact"],
@@ -27,14 +26,9 @@ export function SiteNav() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <nav className={`nav wrap${scrolled ? " is-scrolled" : ""}`} aria-label="Navigasi utama">
-        <Link className="brand" href="#home" aria-label="Beranda JCP">
-          <Image
-            src="/jcp-logo.svg"
-            alt="JCP — Jogja Creative Production"
-            width={124}
-            height={74}
-            priority
-          />
+        <Link className="brand" href="#home" aria-label="Beranda JCPWebSolutions">
+          <Image className="brand-logo" src="/logo.png" alt="JCPWebSolutions" width={112} height={70} />
+          <span className="brand-wordmark"><strong>JCP</strong>WebSolutions</span>
         </Link>
         <button
           className="menu-toggle"

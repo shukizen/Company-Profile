@@ -10,8 +10,6 @@ const revealSelectors = [
   ".hero-copy > .hero-actions",
   ".hero-copy > .hero-assurance",
   ".hero-visual",
-  ".intro-layout > div",
-  ".advantage",
   ".section-head-main",
   ".section-summary",
   ".service-card",

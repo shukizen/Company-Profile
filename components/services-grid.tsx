@@ -1,5 +1,4 @@
 import {
-  BriefcaseBusiness,
   CalendarDays,
   Check,
   CodeXml,
@@ -18,9 +17,9 @@ const serviceIcons = [
   PanelsTopLeft,
   CodeXml,
   ShoppingCart,
-  BriefcaseBusiness,
-  PanelsTopLeft,
   CalendarDays,
+  PanelsTopLeft,
+  CodeXml,
 ];
 
 export function ServicesGrid({ services }: { services: ServiceItem[] }) {
