@@ -11362,3 +11362,10 @@ summary:focus-visible {
   background: var(--palette-yellow);
   color: #06245a;
 }
+
+.process-step:hover .process-dot,
+.process-step:focus-within .process-dot {
+  background: #06245a;
+  border-color: #06245a;
+  color: var(--palette-yellow);
+}
