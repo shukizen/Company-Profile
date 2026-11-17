@@ -11356,3 +11356,9 @@ summary:focus-visible {
   background: transparent;
   color: var(--palette-yellow);
 }
+
+.service-cards .service-card:hover .service-card-cta svg,
+.service-cards .service-card:focus-visible .service-card-cta svg {
+  background: var(--palette-yellow);
+  color: #06245a;
+}
