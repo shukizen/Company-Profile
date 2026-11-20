@@ -10864,6 +10864,8 @@ summary:focus-visible {
 .project-grid {
   display: flex;
   gap: 22px;
+  grid-column: 2;
+  grid-row: 1;
   overflow-x: auto;
   overflow-y: hidden;
   min-width: 0;
@@ -10891,6 +10893,16 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.project-carousel-control-previous {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.project-carousel-control-next {
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .project-carousel-button {
@@ -10958,8 +10970,32 @@ summary:focus-visible {
   }
 
   .project-grid > .project-card {
-    flex-basis: min(calc(100vw - 128px), 520px);
-    width: min(calc(100vw - 128px), 520px);
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .project-carousel {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .project-grid {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .project-carousel-control-previous {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+  }
+
+  .project-carousel-control-next {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-end;
   }
 }
 
@@ -11481,4 +11517,3 @@ summary:focus-visible {
 .project-grid > .project-card:focus-visible > .project-info > div > .text-link svg {
   color: var(--palette-navy);
 }
-

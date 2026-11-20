@@ -33,16 +33,36 @@ export function ProjectCarousel({ children }: { children: ReactNode }) {
     const track = trackRef.current;
     if (!track) return;
 
+    const firstCard = track.querySelector<HTMLElement>(".project-card");
+    if (!firstCard) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
+    const step = firstCard.getBoundingClientRect().width + gap;
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    const currentIndex = Math.round(track.scrollLeft / step);
+    const targetScrollLeft = Math.max(
+      0,
+      Math.min(maxScrollLeft, (currentIndex + direction) * step),
+    );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    track.scrollBy({
-      left: direction * track.clientWidth * 0.85,
+    track.scrollTo({
+      left: targetScrollLeft,
       behavior: reduceMotion ? "auto" : "smooth",
     });
   };
 
   return (
     <div className="project-carousel">
-      <div className="project-carousel-control">
+      <div
+        className="project-grid"
+        role="region"
+        aria-label="Contoh website, geser ke kanan untuk melihat semua referensi"
+        tabIndex={0}
+        ref={trackRef}
+      >
+        {children}
+      </div>
+      <div className="project-carousel-control project-carousel-control-previous">
         <button
           className="project-carousel-button"
           type="button"
@@ -53,16 +73,7 @@ export function ProjectCarousel({ children }: { children: ReactNode }) {
           <ArrowLeft size={19} aria-hidden="true" />
         </button>
       </div>
-      <div
-        className="project-grid"
-        role="region"
-        aria-label="Contoh website, geser ke kanan untuk melihat semua referensi"
-        tabIndex={0}
-        ref={trackRef}
-      >
-        {children}
-      </div>
-      <div className="project-carousel-control">
+      <div className="project-carousel-control project-carousel-control-next">
         <button
           className="project-carousel-button"
           type="button"
