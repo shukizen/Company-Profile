@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import { MessageCircle, Menu, X } from "lucide-react";
 
 const links = [
-  ["Beranda", "#home"],
-  ["Layanan", "#services"],
-  ["Contoh Website", "#projects"],
-  ["Kontak", "#contact"],
+  ["Beranda", "home"],
+  ["Layanan", "services"],
+  ["Contoh Website", "projects"],
+  ["Kontak", "contact"],
 ];
 
-export function SiteNav() {
+export function SiteNav({ homePage = true }: { homePage?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -23,9 +23,9 @@ export function SiteNav() {
   }, []);
 
   return (
-    <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
+    <header className={`site-header${homePage ? "" : " is-detail"}${scrolled ? " is-scrolled" : ""}`}>
       <nav className={`nav wrap${scrolled ? " is-scrolled" : ""}`} aria-label="Navigasi utama">
-        <a className="brand" href="#home" aria-label="Beranda JCPWebSolutions">
+        <a className="brand" href={`${homePage ? "" : "/"}#home`} aria-label="Beranda JCPWebSolutions">
           <Image className="brand-logo" src="/logo.png" alt="JCPWebSolutions" width={112} height={70} />
           <span className="brand-wordmark"><strong>JCP</strong>WebSolutions</span>
         </a>
@@ -40,12 +40,12 @@ export function SiteNav() {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
         <div className={`nav-links${open ? " is-open" : ""}`} id="nav-links">
-          {links.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
+          {links.map(([label, section]) => (
+            <a key={section} href={`${homePage ? "" : "/"}#${section}`} onClick={() => setOpen(false)}>
               {label}
             </a>
           ))}
-          <a className="button button-small" href="#contact" onClick={() => setOpen(false)}>
+          <a className="button button-small" href={`${homePage ? "" : "/"}#contact`} onClick={() => setOpen(false)}>
             Konsultasi Website <MessageCircle size={16} aria-hidden="true" />
           </a>
         </div>

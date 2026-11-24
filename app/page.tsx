@@ -6,7 +6,6 @@ import {
   Code2,
   ExternalLink,
   Globe,
-  Mail,
   MapPin,
   PanelsTopLeft,
   MessageCircle,
@@ -17,40 +16,9 @@ import { Mercury } from "@/components/mercury";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ScrollTransitions } from "@/components/scroll-transitions";
 import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
 import { ServicesGrid } from "@/components/services-grid";
-
-const services = [
-  {
-    title: "Website Company Profile",
-    description: "Website resmi untuk mengenalkan perusahaan, menjelaskan layanan, dan membantu calon pelanggan menghubungi Anda.",
-    examples: ["Profil dan cerita perusahaan", "Halaman layanan", "Portofolio dan testimoni", "Kontak dan lokasi"],
-  },
-  {
-    title: "Landing Page Promosi",
-    description: "Halaman fokus untuk mempromosikan produk, layanan, atau kampanye dengan ajakan yang jelas.",
-    examples: ["Halaman kampanye", "Informasi produk atau layanan", "Tombol konsultasi/pemesanan", "Form pendaftaran"],
-  },
-  {
-    title: "Website Toko Online",
-    description: "Website untuk menampilkan produk dan menerima pesanan, dengan alur belanja yang disesuaikan dengan bisnis Anda.",
-    examples: ["Katalog dan detail produk", "Keranjang atau formulir pesanan", "Pembayaran sesuai kebutuhan", "Informasi pengiriman"],
-  },
-  {
-    title: "Website Booking & Reservasi",
-    description: "Website yang memudahkan pelanggan melihat ketersediaan layanan dan mengajukan pemesanan secara online.",
-    examples: ["Jadwal dan ketersediaan", "Form pemesanan", "Konfirmasi reservasi", "Informasi layanan"],
-  },
-  {
-    title: "Website Portofolio",
-    description: "Website untuk menampilkan karya, keahlian, dan pengalaman profesional secara menarik dan mudah diakses.",
-    examples: ["Galeri proyek", "Profil dan keahlian", "Testimoni klien", "Kontak profesional"],
-  },
-  {
-    title: "Website Custom",
-    description: "Website yang dirancang dan dikembangkan sesuai tujuan, kebutuhan, dan alur bisnis Anda.",
-    examples: ["Tampilan sesuai identitas bisnis", "Halaman sesuai kebutuhan", "Fitur yang disepakati", "Integrasi sesuai kebutuhan"],
-  },
-];
+import { services } from "@/lib/services";
 
 const workSteps = [
   {
@@ -120,7 +88,7 @@ export default function HomePage() {
           <div className="wrap">
             <div className="section-head">
               <div className="section-head-main"><p className="eyebrow">PILIH JENIS WEBSITE</p><h2 id="services-title">Jasa pembuatan website<br /><span>untuk kebutuhan Anda.</span></h2></div>
-              <p className="section-summary">Dari profil perusahaan dan toko online hingga portofolio dan sistem reservasi, kami merancang website sesuai tujuan dan kebutuhan bisnis Anda.</p>
+              <p className="section-summary">Pilih kartu untuk melihat fitur dan cakupan layanan yang paling sesuai dengan kebutuhan bisnis Anda.</p>
             </div>
             <ServicesGrid services={services} />
           </div>
@@ -133,7 +101,16 @@ export default function HomePage() {
               <p className="section-summary">Tahapannya jelas dan Anda terlibat dalam keputusan penting sebelum website diluncurkan.</p>
             </div>
             <div className="process-grid">
-              {workSteps.map(({ title, text, icon: Icon }, index) => <article className="process-step" key={title}><span className="process-number">0{index + 1}</span><span className="process-dot" aria-hidden="true"><Icon size={17} strokeWidth={1.8} /></span><h3>{title}</h3><p>{text}</p></article>)}
+              {workSteps.map(({ title, text, icon: Icon }, index) => (
+                <article className="process-step" key={title}>
+                  <span className="process-number">0{index + 1}</span>
+                  <span className="process-dot" aria-hidden="true"><Icon size={17} strokeWidth={1.8} /></span>
+                  <div className="process-step-card">
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -290,7 +267,7 @@ export default function HomePage() {
 
         <section className="faq-section section" id="faq" aria-labelledby="faq-title">
           <div className="wrap faq-layout">
-            <div className="faq-intro"><h2 id="faq-title">Pertanyaan,<br /><span>terjawab.</span></h2><p>Ingin tahu lebih banyak tentang proses pembuatan website? Kami siap membantu membahas kebutuhan Anda.</p><a className="text-link" href="#contact">Tanyakan langsung <ArrowUpRight size={16} /></a></div>
+            <div className="faq-intro"><h2 id="faq-title">Pertanyaan,<br /><span>terjawab.</span></h2><p>Ingin tahu lebih banyak tentang proses pembuatan website? Kami siap membantu membahas kebutuhan Anda.</p><a className="text-link" href="#contact">Tanyakan langsung <WhatsAppMark className="faq-whatsapp-mark" /></a></div>
             <FAQ />
           </div>
         </section>
@@ -319,22 +296,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-      <footer className="footer">
-        <svg className="footer-wave" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
-          <path fill="#FFE30F" d="M0 30 C150 4 235 23 350 48 C480 78 570 88 690 65 C815 42 890 14 1010 8 C1125 3 1170 29 1285 23 C1350 19 1395 12 1440 17 L1440 31 C1395 26 1350 33 1285 37 C1170 43 1125 17 1010 22 C890 28 815 56 690 79 C570 102 480 92 350 62 C235 37 150 18 0 44 Z" />
-          <path fill="#0047BD" d="M0 44 C150 18 235 37 350 62 C480 92 570 102 690 79 C815 56 890 28 1010 22 C1125 17 1170 43 1285 37 C1350 33 1395 26 1440 31 L1440 45 C1395 40 1350 47 1285 51 C1170 57 1125 31 1010 36 C890 42 815 70 690 93 C570 116 480 106 350 76 C235 51 150 32 0 58 Z" />
-          <path fill="#040506" d="M0 58 C150 32 235 51 350 76 C480 106 570 116 690 93 C815 70 890 42 1010 36 C1125 31 1170 57 1285 51 C1350 47 1395 40 1440 45 V190 H0 Z" />
-        </svg>
-        <div className="wrap">
-          <div className="footer-main">
-              <div className="footer-brand"><a className="brand" href="#home" aria-label="Beranda JCPWebSolutions"><Image className="brand-logo" src="/logo.png" alt="" width={112} height={70} /><span className="footer-wordmark"><strong>JCP</strong>WebSolutions</span></a><p>Website untuk kebutuhan dan tujuan bisnis Anda.</p></div>
-            <div className="footer-col"><span>NAVIGASI</span><a href="#home">Beranda</a><a href="#services">Layanan</a><a href="#projects">Portofolio website</a><a href="#faq">FAQ</a></div>
-            <div className="footer-col"><span>JENIS WEBSITE</span><a href="#services">Company profile</a><a href="#services">Landing page promosi</a><a href="#services">Toko online</a><a href="#services">Booking &amp; reservasi</a><a href="#services">Website portofolio</a><a href="#services">Website custom</a></div>
-            <div className="footer-locale"><span>HUBUNGI KAMI</span><p>Diskusikan kebutuhan website Anda bersama tim kami.</p><a className="footer-contact-link" href="mailto:jogjacreativeproduction@gmail.com"><Mail size={15} aria-hidden="true" />jogjacreativeproduction@gmail.com</a><a className="footer-contact-link" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer"><WhatsAppMark className="whatsapp-mark" />WhatsApp +62 856-0060-4388</a><a className="footer-contact-link" href="#contact">Konsultasi website <ArrowUpRight size={15} /></a></div>
-          </div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} PT Jogja Creative Production</span><span>JCPWebSolutions · Yogyakarta</span><a href="#home">Kembali ke atas ↑</a></div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

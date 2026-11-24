@@ -1,40 +1,41 @@
 import {
+  Blocks,
+  Building2,
   CalendarDays,
   Check,
-  CodeXml,
-  ArrowUpRight,
-  PanelsTopLeft,
+  ArrowRight,
+  Images,
+  Megaphone,
   ShoppingCart,
 } from "lucide-react";
-
-type ServiceItem = {
-  title: string;
-  description: string;
-  examples: string[];
-};
+import Link from "next/link";
+import type { ServicePageData } from "@/lib/services";
 
 const serviceIcons = [
-  PanelsTopLeft,
-  CodeXml,
+  Building2,
+  Megaphone,
   ShoppingCart,
   CalendarDays,
-  PanelsTopLeft,
-  CodeXml,
+  Images,
+  Blocks,
 ];
 
-export function ServicesGrid({ services }: { services: ServiceItem[] }) {
+export function ServicesGrid({ services }: { services: readonly ServicePageData[] }) {
   return (
     <div className="service-cards">
-      {services.map(({ title, description, examples }, index) => {
+      {services.map(({ slug, title, description, examples }, index) => {
         const Icon = serviceIcons[index % serviceIcons.length];
 
         return (
-          <a className="service-card" href="#contact" key={title}>
+          <Link className="service-card" href={`/layanan/${slug}`} key={slug}>
             <span className="service-card-top">
               <span className="service-card-icon" aria-hidden="true">
                 <Icon size={22} strokeWidth={2} />
               </span>
-              <span className="service-card-number">0{index + 1} <span>/ WEBSITE</span></span>
+              <span className="service-card-number">
+                {String(index + 1).padStart(2, "0")}
+                <span>/ {String(services.length).padStart(2, "0")} JENIS</span>
+              </span>
             </span>
             <h3>{title}</h3>
             <p className="service-card-description">{description}</p>
@@ -47,9 +48,14 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
               ))}
             </ul>
             <span className="service-card-cta">
-              Diskusikan kebutuhan <ArrowUpRight size={16} aria-hidden="true" />
+              <span>Lihat detail layanan</span>
+              <svg className="service-card-hover-wave" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path className="service-card-hover-wave-blue" d="M0 80 C28 80 48 75 66 64 C82 54 92 35 100 23 V140 H0 Z" />
+                <path className="service-card-hover-wave-yellow" d="M66 64 C82 53 92 27 100 0 L100 23 C92 37 82 55 66 64 Z" />
+              </svg>
+              <ArrowRight className="service-card-cta-icon" size={16} aria-hidden="true" />
             </span>
-          </a>
+          </Link>
         );
       })}
     </div>
