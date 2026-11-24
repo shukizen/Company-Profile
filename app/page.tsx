@@ -15,6 +15,7 @@ import { FAQ } from "@/components/faq";
 import { Mercury } from "@/components/mercury";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ScrollTransitions } from "@/components/scroll-transitions";
+import { ServiceMarquee } from "@/components/service-marquee";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { ServicesGrid } from "@/components/services-grid";
@@ -81,12 +82,6 @@ export default function HomePage() {
           <div className="hero-copy">
             <h1 id="hero-title">Website Bisnis Anda<br /><span>Lebih Berkembang</span></h1>
             <p className="hero-lede">JCPWebSolutions merancang company profile, landing page, toko online, dan aplikasi web yang sesuai dengan tujuan bisnis Anda.</p>
-            <div className="hero-actions">
-              <a className="hero-cta-primary" href="#projects">
-                <span>Lihat contoh website</span>
-                <ArrowDown size={16} aria-hidden="true" />
-              </a>
-            </div>
             <ul className="hero-assurance" aria-label="Keunggulan layanan">
               <li>
                 <span className="hero-assurance-icon" aria-hidden="true"><Check size={13} strokeWidth={2.75} /></span>
@@ -101,7 +96,18 @@ export default function HomePage() {
                 <span>Dari desain hingga siap tayang</span>
               </li>
             </ul>
+            <div className="hero-actions">
+              <a className="hero-cta-primary" href="#projects">
+                <span>Lihat contoh website</span>
+                <ArrowDown size={16} aria-hidden="true" />
+              </a>
+            </div>
           </div>
+          <svg className="hero-wave" viewBox="0 0 1440 84" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#FFE30F" d="M0 4 Q720 124 1440 4 L1440 10 Q720 130 0 10 Z" />
+            <path fill="#0047BD" d="M0 10 Q720 130 1440 10 L1440 17 Q720 137 0 17 Z" />
+            <path fill="#f7f9ff" d="M0 17 Q720 137 1440 17 V84 H0 Z" />
+          </svg>
         </section>
 
         <section className="services section" id="services" aria-labelledby="services-title">
@@ -113,6 +119,8 @@ export default function HomePage() {
             <ServicesGrid services={services} />
           </div>
         </section>
+
+        <ServiceMarquee />
 
         <section className="process section" id="process" aria-labelledby="process-title">
           <div className="wrap">
@@ -148,13 +156,14 @@ export default function HomePage() {
         </section>
 
         <section className="projects section" id="projects" aria-labelledby="projects-title">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="section-head-main"><p className="projects-eyebrow"><span aria-hidden="true" />REFERENSI WEBSITE</p><h2 id="projects-title">Lihat inspirasi website<br /><span>untuk bisnis Anda.</span></h2></div>
-              <p className="section-summary">Contoh situs nyata ini menunjukkan berbagai arah desain. Struktur, fitur, dan tampilannya dapat menjadi inspirasi yang disesuaikan dengan kebutuhan bisnis Anda.</p>
+          <div className="projects-surface">
+            <div className="wrap">
+              <div className="section-head">
+                <div className="section-head-main"><p className="projects-eyebrow"><span aria-hidden="true" />REFERENSI WEBSITE</p><h2 id="projects-title">Lihat inspirasi website<br /><span>untuk bisnis Anda.</span></h2></div>
+                <p className="section-summary">Contoh situs nyata ini menunjukkan berbagai arah desain. Struktur, fitur, dan tampilannya dapat menjadi inspirasi yang disesuaikan dengan kebutuhan bisnis Anda.</p>
+              </div>
             </div>
-          </div>
-          <ProjectCarousel>
+            <ProjectCarousel>
               <a className="project-card" href="https://innoasisstay.com/" target="_blank" rel="noreferrer" aria-label="Kunjungi situs Inn Oasis Accommodation">
                 <div className="project-art project-art-reference" aria-label="Referensi halaman utama Inn Oasis Accommodation" role="img">
                   <Image src="/project-reference-innoasis.webp" alt="" aria-hidden="true" width={1200} height={800} />
@@ -295,7 +304,8 @@ export default function HomePage() {
               </div>
               <div className="project-info"><div><span className="project-category">WEBSITE PORTOFOLIO · DEVELOPER</span><h3>Achmad Farizy: Website portofolio</h3><p>Referensi portofolio personal dengan perkenalan singkat, proyek pilihan, informasi jasa, dan ajakan untuk menghubungi pemiliknya.</p><span className="text-link">Kunjungi website <Globe size={15} /></span></div><span className="project-arrow"><ExternalLink size={18} /></span></div>
             </a>
-          </ProjectCarousel>
+            </ProjectCarousel>
+          </div>
         </section>
 
         <section className="faq-section section" id="faq" aria-labelledby="faq-title">
@@ -314,57 +324,59 @@ export default function HomePage() {
         </section>
 
         <section className="contact section" id="contact" aria-labelledby="contact-title">
-          <div className="wrap">
-            <div className="contact-card">
-              <div className="contact-intro">
-                <p className="contact-eyebrow"><span aria-hidden="true" />HUBUNGI KAMI</p>
-                <h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2>
-                <p className="contact-lead">Ceritakan kebutuhan website Anda. Tim JCPWebSolutions siap membantu merencanakannya dari struktur hingga siap tayang.</p>
-                <div className="contact-actions">
-                  <a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
-                    <WhatsAppMark className="whatsapp-mark" />Konsultasi via WhatsApp
-                  </a>
-                </div>
-                <div className="contact-channels" aria-label="Saluran kontak langsung">
-                  <a className="contact-channel" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
-                    <span className="contact-channel-icon" aria-hidden="true"><WhatsAppMark className="whatsapp-mark" /></span>
-                    <span className="contact-channel-copy">
-                      <span className="contact-channel-label">WhatsApp</span>
-                      <span className="contact-channel-value">+62 856-0060-4388</span>
-                    </span>
-                  </a>
-                  <a className="contact-channel" href="mailto:jogjacreativeproduction@gmail.com">
-                    <span className="contact-channel-icon" aria-hidden="true"><Mail size={18} /></span>
-                    <span className="contact-channel-copy">
-                      <span className="contact-channel-label">Email</span>
-                      <span className="contact-channel-value">jogjacreativeproduction@gmail.com</span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className="contact-details-panel">
-                <div className="contact-map-wrap">
-                  <div className="contact-map-heading">
-                    <div className="contact-map-heading-copy">
-                      <span className="contact-map-eyebrow">LOKASI STUDIO</span>
-                      <h3>Jogja Creative Production</h3>
-                      <p><MapPin size={14} aria-hidden="true" /> Yogyakarta, Indonesia</p>
-                    </div>
-                    <a className="contact-map-link" href="https://maps.app.goo.gl/dxHBpge1sCeYmigX8" target="_blank" rel="noreferrer">
-                      Buka peta
+          <div className="contact-surface">
+            <div className="wrap">
+              <div className="contact-card">
+                <div className="contact-intro">
+                  <p className="contact-eyebrow"><span aria-hidden="true" />HUBUNGI KAMI</p>
+                  <h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2>
+                  <p className="contact-lead">Ceritakan kebutuhan website Anda. Tim JCPWebSolutions siap membantu merencanakannya dari struktur hingga siap tayang.</p>
+                  <div className="contact-actions">
+                    <a className="button contact-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
+                      <WhatsAppMark className="whatsapp-mark" />Konsultasi via WhatsApp
                     </a>
                   </div>
-                  <div className="contact-map-frame">
-                    <iframe
-                      className="contact-map"
-                      title="Peta lokasi Jogja Creative Production"
-                      src="https://maps.google.com/maps?q=-7.7304157%2C110.3609453&z=16&output=embed"
-                      width={600}
-                      height={360}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      allowFullScreen
-                    />
+                  <div className="contact-channels" aria-label="Saluran kontak langsung">
+                    <a className="contact-channel" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
+                      <span className="contact-channel-icon" aria-hidden="true"><WhatsAppMark className="whatsapp-mark" /></span>
+                      <span className="contact-channel-copy">
+                        <span className="contact-channel-label">WhatsApp</span>
+                        <span className="contact-channel-value">+62 856-0060-4388</span>
+                      </span>
+                    </a>
+                    <a className="contact-channel" href="mailto:jogjacreativeproduction@gmail.com">
+                      <span className="contact-channel-icon" aria-hidden="true"><Mail size={18} /></span>
+                      <span className="contact-channel-copy">
+                        <span className="contact-channel-label">Email</span>
+                        <span className="contact-channel-value">jogjacreativeproduction@gmail.com</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div className="contact-details-panel">
+                  <div className="contact-map-wrap">
+                    <div className="contact-map-heading">
+                      <div className="contact-map-heading-copy">
+                        <span className="contact-map-eyebrow">LOKASI STUDIO</span>
+                        <h3>Jogja Creative Production</h3>
+                        <p><MapPin size={14} aria-hidden="true" /> Yogyakarta, Indonesia</p>
+                      </div>
+                      <a className="contact-map-link" href="https://maps.app.goo.gl/dxHBpge1sCeYmigX8" target="_blank" rel="noreferrer">
+                        Buka peta
+                      </a>
+                    </div>
+                    <div className="contact-map-frame">
+                      <iframe
+                        className="contact-map"
+                        title="Peta lokasi Jogja Creative Production"
+                        src="https://maps.google.com/maps?q=-7.7304157%2C110.3609453&z=16&output=embed"
+                        width={600}
+                        height={360}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
