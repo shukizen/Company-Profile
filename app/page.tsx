@@ -103,14 +103,14 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-          <svg className="hero-wave" viewBox="0 0 1440 84" preserveAspectRatio="none" aria-hidden="true">
+        </section>
+
+        <section className="services section" id="services" aria-labelledby="services-title">
+          <svg className="services-wave-cap" viewBox="0 0 1440 84" preserveAspectRatio="none" aria-hidden="true">
             <path fill="#FFE30F" d="M0 4 Q720 124 1440 4 L1440 10 Q720 130 0 10 Z" />
             <path fill="#0047BD" d="M0 10 Q720 130 1440 10 L1440 17 Q720 137 0 17 Z" />
             <path fill="#f7f9ff" d="M0 17 Q720 137 1440 17 V84 H0 Z" />
           </svg>
-        </section>
-
-        <section className="services section" id="services" aria-labelledby="services-title">
           <div className="wrap">
             <div className="section-head">
               <div className="section-head-main"><p className="services-eyebrow"><span aria-hidden="true" />PILIH JENIS WEBSITE</p><h2 id="services-title">Jasa pembuatan website<br /><span>untuk kebutuhan Anda.</span></h2></div>

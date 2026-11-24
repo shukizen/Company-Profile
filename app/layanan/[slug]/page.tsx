@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowDown, ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ScrollTransitions } from "@/components/scroll-transitions";
 import { ServiceReferenceGrid } from "@/components/service-reference-grid";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -42,6 +43,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     <>
       <a className="skip-link" href="#main">Lewati ke konten</a>
       <SiteNav homePage={false} />
+      <ScrollTransitions />
       <main className="service-detail-main" id="main">
         <section className="service-detail-intro" aria-labelledby="service-title">
           <div className="wrap">
