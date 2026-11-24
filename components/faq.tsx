@@ -4,7 +4,7 @@ const items = [
   {
     question: "Website seperti apa yang bisa dibuat JCPWebSolutions?",
     answer:
-      "Kami mengerjakan website company profile, landing page, toko online, dan aplikasi web. Jenis website serta fitur akan disesuaikan dengan kebutuhan bisnis Anda.",
+      "Kami mengerjakan website company profile, landing page promosi, toko online, booking dan reservasi, website portofolio, hingga website custom. Jenis website serta fiturnya disesuaikan dengan kebutuhan bisnis Anda.",
   },
   {
     question: "Apakah JCPWebSolutions melayani UMKM dan bisnis kecil?",
@@ -14,12 +14,12 @@ const items = [
   {
     question: "Bagaimana cara memulai pembuatan website?",
     answer:
-      "Hubungi kami melalui WhatsApp dan ceritakan bisnis, tujuan website, dan fitur yang Anda butuhkan. Kami akan membahas cakupan dan langkah selanjutnya bersama Anda.",
+      "Hubungi kami melalui WhatsApp dan ceritakan bisnis, tujuan website, serta fitur yang Anda butuhkan. Kami akan membahas cakupan dan langkah selanjutnya bersama Anda.",
   },
   {
     question: "Apakah website dapat dibuka melalui ponsel?",
     answer:
-      "Ya. Website dirancang responsif agar tampil dan digunakan dengan nyaman di ponsel, tablet, dan komputer.",
+      "Ya. Website dirancang responsif agar tampil dan digunakan dengan nyaman di ponsel, tablet, maupun komputer.",
   },
   {
     question: "Berapa biaya pembuatan website?",
@@ -31,11 +31,16 @@ const items = [
 export function FAQ() {
   return (
     <div className="faq-list">
-      {items.map((item) => (
-        <details className="faq-item" key={item.question}>
+      {items.map((item, index) => (
+        <details className="faq-item" key={item.question} open={index === 0}>
           <summary>
-            <span>{item.question}</span>
-            <ChevronDown className="faq-chevron" size={19} aria-hidden="true" />
+            <span className="faq-number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="faq-question">{item.question}</span>
+            <span className="faq-toggle" aria-hidden="true">
+              <ChevronDown className="faq-chevron" size={18} />
+            </span>
           </summary>
           <p>{item.answer}</p>
         </details>

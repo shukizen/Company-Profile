@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, ChevronRight } from "lucide-react";
 import { ServiceReferenceGrid } from "@/components/service-reference-grid";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -36,62 +36,179 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   const titlePrefix = service.title.startsWith("Landing Page ") ? "Landing Page" : "Website";
   const titleAccent = service.title.slice(titlePrefix.length).trim();
+  const isCustom = service.slug === "website-custom";
 
   return (
     <>
       <a className="skip-link" href="#main">Lewati ke konten</a>
       <SiteNav homePage={false} />
       <main className="service-detail-main" id="main">
-        <section className="service-detail-intro wrap" aria-labelledby="service-title">
-          <nav className="service-breadcrumb" aria-label="Jejak navigasi">
-            <a href="/">Beranda</a><span aria-hidden="true">/</span><a href="/#services">Semua layanan</a><span aria-hidden="true">/</span><span aria-current="page">{service.title}</span>
-          </nav>
-          <div className="service-detail-title">
-            <p className="eyebrow">LAYANAN JCPWEBSOLUTIONS</p>
-            <h1 id="service-title">
-              <span>{titlePrefix}</span>{" "}<span className="service-detail-title-accent">{titleAccent}</span>
-            </h1>
-          </div>
-          <div className="service-detail-layout">
-            <div className="service-detail-copy">
-              <div className="service-detail-panel">
-                <div className="service-detail-about">
-                  <p className="service-detail-eyebrow"><span aria-hidden="true" />TENTANG LAYANAN</p>
-                  <h2 className="service-detail-question">
-                    <span>Apa itu {titlePrefix}</span>
-                    <span className="service-detail-question-accent">{titleAccent}?</span>
-                  </h2>
-                </div>
-                <div className="service-detail-description">
-                  {service.detailParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  <a className="button service-detail-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
-                    <WhatsAppMark className="whatsapp-mark" /> Diskusikan kebutuhan Anda <ArrowRight size={16} aria-hidden="true" />
-                  </a>
-                </div>
+        <section className="service-detail-intro" aria-labelledby="service-title">
+          <div className="wrap">
+            <nav className="service-breadcrumb" aria-label="Jejak navigasi">
+              <a href="/">Beranda</a>
+              <ChevronRight size={14} aria-hidden="true" />
+              <a href="/#services">Semua layanan</a>
+              <ChevronRight size={14} aria-hidden="true" />
+              <span aria-current="page">{service.title}</span>
+            </nav>
+
+            <div className="service-detail-header">
+              <div className="service-detail-hero-copy">
+                <p className="service-badge service-badge-light">
+                  <span aria-hidden="true" />LAYANAN JCPWEBSOLUTIONS
+                </p>
+                <h1 id="service-title">
+                  <span>{titlePrefix}</span>{" "}
+                  <span className="service-detail-title-accent">{titleAccent}</span>
+                </h1>
+                <p className="service-detail-lead">{service.description}</p>
+              </div>
+              <div className="service-detail-actions">
+                <a className="service-btn-primary" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
+                  <WhatsAppMark className="whatsapp-mark" />
+                  <span>Konsultasi via WhatsApp</span>
+                </a>
+                <a className="service-btn-secondary" href="#service-references">
+                  <span>{isCustom ? "Lihat 6 proyek" : "Lihat 6 referensi"}</span>
+                  <ArrowDown size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            <div className="service-detail-panel" aria-labelledby="service-about-title">
+              <div className="service-detail-about">
+                <p className="service-badge service-badge-light">
+                  <span aria-hidden="true" />TENTANG LAYANAN
+                </p>
+                <h2 className="service-detail-question" id="service-about-title">
+                  <span>Apa itu {titlePrefix}</span>{" "}
+                  <span className="service-detail-question-accent">{titleAccent}?</span>
+                </h2>
+              </div>
+              <div className="service-detail-description">
+                {service.detailParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </div>
         </section>
-        <section className="service-reference-section" aria-labelledby="service-references-title">
+
+        <section className="service-guide-section" aria-labelledby="service-scope-title">
+          <div className="wrap service-guide-grid">
+            <aside className="service-scope-card">
+              <p className="service-badge service-badge-dark">
+                <span aria-hidden="true" />CAKUPAN LAYANAN
+              </p>
+              <h2 id="service-scope-title">Yang disiapkan untuk {service.title.toLowerCase()}</h2>
+              <ul className="service-scope-list">
+                {service.scopeItems.map((item) => (
+                  <li key={item}>
+                    <span className="service-scope-check" aria-hidden="true">
+                      <Check size={14} strokeWidth={2.5} />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+
+            <div className="service-prep" aria-labelledby="service-prep-title">
+              <div className="service-prep-head">
+                <p className="service-badge service-badge-light">
+                  <span aria-hidden="true" />PERSIAPAN AWAL
+                </p>
+                <h2 id="service-prep-title">
+                  Tiga hal yang bisa disiapkan <span>sebelum mulai.</span>
+                </h2>
+              </div>
+              <ol className="service-prep-grid">
+                {service.preparationSteps.map((step, index) => (
+                  <li className="service-prep-card" key={step.title}>
+                    <span className="service-prep-num" aria-hidden="true">0{index + 1}</span>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="service-reference-section" id="service-references" aria-labelledby="service-references-title">
           <div className="wrap">
             <div className="service-reference-heading">
-              {service.slug === "website-custom" ? (
+              {isCustom ? (
                 <>
-                  <div><p className="eyebrow">PORTOFOLIO PROYEK JCPWEBSOLUTIONS</p><h2 id="service-references-title">Enam proyek<br /><span>untuk {service.title.toLowerCase()}.</span></h2></div>
-                  <p>Contoh website custom yang telah dirancang dan dikembangkan langsung oleh tim JCPWebSolutions sesuai kebutuhan masing-masing klien.</p>
+                  <div>
+                    <p className="service-badge service-badge-dark">
+                      <span aria-hidden="true" />PORTOFOLIO PROYEK JCPWEBSOLUTIONS
+                    </p>
+                    <h2 id="service-references-title">
+                      Enam proyek<br />
+                      <span>untuk {service.title.toLowerCase()}.</span>
+                    </h2>
+                  </div>
+                  <p>
+                    Contoh website custom yang telah dirancang dan dikembangkan langsung oleh tim JCPWebSolutions sesuai kebutuhan masing-masing klien.
+                  </p>
                 </>
               ) : (
                 <>
-                  <div><p className="eyebrow">INSPIRASI DARI SITUS PUBLIK</p><h2 id="service-references-title">Enam referensi<br /><span>untuk {service.title.toLowerCase()}.</span></h2></div>
-                  <p>Contoh berikut menunjukkan pendekatan yang bisa dipelajari dan disesuaikan. Situs-situs ini bukan proyek JCPWebSolutions.</p>
+                  <div>
+                    <p className="service-badge service-badge-dark">
+                      <span aria-hidden="true" />INSPIRASI DARI SITUS PUBLIK
+                    </p>
+                    <h2 id="service-references-title">
+                      Enam referensi<br />
+                      <span>untuk {service.title.toLowerCase()}.</span>
+                    </h2>
+                  </div>
+                  <p>
+                    Contoh berikut menunjukkan pendekatan yang bisa dipelajari dan disesuaikan. Situs-situs ini bukan proyek JCPWebSolutions.
+                  </p>
                 </>
               )}
             </div>
+
             <ServiceReferenceGrid
               references={service.references}
               serviceTitle={service.title}
-              badgePrefix={service.slug === "website-custom" ? "Proyek JCPWebSolutions" : "Website Referensi"}
+              badgePrefix={isCustom ? "Proyek JCPWebSolutions" : "Website Referensi"}
             />
+
+            <div className="service-switcher">
+              <div className="service-switcher-head">
+                <div>
+                  <p className="service-badge service-badge-dark">
+                    <span aria-hidden="true" />JELAJAHI LAYANAN LAIN
+                  </p>
+                  <h2>Lihat jenis website lainnya</h2>
+                </div>
+                <a className="service-switcher-cta" href="https://wa.me/6285600604388" target="_blank" rel="noreferrer">
+                  <WhatsAppMark className="whatsapp-mark" />
+                  <span>Diskusikan kebutuhan Anda</span>
+                </a>
+              </div>
+              <nav className="service-switcher-grid" aria-label="Daftar layanan website">
+                {services.map((item, index) => {
+                  const isCurrent = item.slug === service.slug;
+                  return (
+                    <a
+                      className={`service-switcher-item${isCurrent ? " is-current" : ""}`}
+                      href={`/layanan/${item.slug}`}
+                      aria-current={isCurrent ? "page" : undefined}
+                      key={item.slug}
+                    >
+                      <span className="service-switcher-num">0{index + 1}</span>
+                      <span className="service-switcher-title">{item.title}</span>
+                      <ArrowRight size={15} aria-hidden="true" />
+                    </a>
+                  );
+                })}
+              </nav>
+            </div>
           </div>
         </section>
       </main>
