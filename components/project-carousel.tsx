@@ -3,12 +3,15 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 
-const AUTO_ADVANCE_MS = 3500;
+const AUTO_ADVANCE_MS = 2400;
+const RESUME_AFTER_PAUSE_MS = 900;
+const TOUCH_PAUSE_MS = 1400;
 
 export function ProjectCarousel({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const interactionPauseTimerRef = useRef<number | null>(null);
+  const wasPausedRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
   const [totalCards, setTotalCards] = useState(0);
@@ -125,15 +128,37 @@ export function ProjectCarousel({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
-    if (prefersReducedMotion || isPausedByHover || isPausedByFocus || isPausedByTouch || !isInView) {
+    const isPaused =
+      prefersReducedMotion || isPausedByHover || isPausedByFocus || isPausedByTouch || !isInView;
+
+    if (isPaused) {
+      if (isPausedByHover || isPausedByFocus || isPausedByTouch) {
+        wasPausedRef.current = true;
+      }
       return;
     }
 
-    const timer = window.setInterval(() => {
-      scrollStep(1, true);
-    }, AUTO_ADVANCE_MS);
+    let intervalId: number | null = null;
+    let resumeTimerId: number | null = null;
 
-    return () => window.clearInterval(timer);
+    if (wasPausedRef.current) {
+      wasPausedRef.current = false;
+      resumeTimerId = window.setTimeout(() => {
+        scrollStep(1, true);
+        intervalId = window.setInterval(() => {
+          scrollStep(1, true);
+        }, AUTO_ADVANCE_MS);
+      }, RESUME_AFTER_PAUSE_MS);
+    } else {
+      intervalId = window.setInterval(() => {
+        scrollStep(1, true);
+      }, AUTO_ADVANCE_MS);
+    }
+
+    return () => {
+      if (resumeTimerId !== null) window.clearTimeout(resumeTimerId);
+      if (intervalId !== null) window.clearInterval(intervalId);
+    };
   }, [prefersReducedMotion, isPausedByHover, isPausedByFocus, isPausedByTouch, isInView, scrollStep]);
 
   useEffect(() => {
@@ -151,7 +176,7 @@ export function ProjectCarousel({ children }: { children: ReactNode }) {
     }
     interactionPauseTimerRef.current = window.setTimeout(() => {
       setIsPausedByTouch(false);
-    }, 5000);
+    }, TOUCH_PAUSE_MS);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -179,7 +204,11 @@ export function ProjectCarousel({ children }: { children: ReactNode }) {
       ref={rootRef}
       onMouseEnter={() => setIsPausedByHover(true)}
       onMouseLeave={() => setIsPausedByHover(false)}
-      onFocus={() => setIsPausedByFocus(true)}
+      onFocus={(event) => {
+        if (event.target.matches(":focus-visible")) {
+          setIsPausedByFocus(true);
+        }
+      }}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
           setIsPausedByFocus(false);
