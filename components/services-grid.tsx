@@ -1,30 +1,13 @@
-import {
-  ArrowRight,
-  Blocks,
-  Building2,
-  CalendarDays,
-  Check,
-  Images,
-  Megaphone,
-  ShoppingCart,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
+import { getServiceIcon } from "@/lib/service-icons";
 import type { ServicePageData } from "@/lib/services";
-
-const serviceIcons = [
-  Building2,
-  Megaphone,
-  ShoppingCart,
-  CalendarDays,
-  Images,
-  Blocks,
-];
 
 export function ServicesGrid({ services }: { services: readonly ServicePageData[] }) {
   return (
     <div className="service-cards">
       {services.map(({ slug, title, description, examples }, index) => {
-        const Icon = serviceIcons[index % serviceIcons.length];
+        const Icon = getServiceIcon(slug);
         const isFeatured = slug === "website-custom";
 
         return (
