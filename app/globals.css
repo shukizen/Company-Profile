@@ -14723,7 +14723,7 @@ summary:focus-visible {
   width: 148px;
   height: 148px;
   color: var(--palette-blue);
-  opacity: 0.07;
+  opacity: 0.11;
   transform: rotate(-10deg);
   pointer-events: none;
   transition: opacity .24s ease, transform .24s ease;
@@ -14736,7 +14736,7 @@ summary:focus-visible {
 
 .services .service-cards .service-card:hover .service-card-watermark,
 .services .service-cards .service-card:focus-visible .service-card-watermark {
-  opacity: 0.11;
+  opacity: 0.16;
   transform: rotate(-6deg) scale(1.04);
 }
 
@@ -14896,13 +14896,14 @@ summary:focus-visible {
 
 .services .service-cards .service-card.is-featured .service-card-watermark,
 .services .service-cards .service-card.is-featured:not(:hover):not(:focus-visible) .service-card-watermark {
-  color: #ffffff;
-  opacity: 0.065;
+  color: var(--palette-yellow);
+  opacity: 0.09;
 }
 
 .services .service-cards .service-card.is-featured:hover .service-card-watermark,
 .services .service-cards .service-card.is-featured:focus-visible .service-card-watermark {
-  opacity: 0.11;
+  color: var(--palette-yellow);
+  opacity: 0.14;
 }
 
 .services .service-cards .service-card.is-featured .service-card-number {
