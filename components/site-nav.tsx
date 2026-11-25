@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { WhatsAppMark } from "@/components/whatsapp-mark";
 
 const links = [
   ["Beranda", "home"],
@@ -92,7 +93,7 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
             href={`${homePage ? "" : "/"}#contact`}
             onClick={() => setMobileOpen(false)}
           >
-            Konsultasi Website <MessageCircle size={16} aria-hidden="true" />
+            Konsultasi Website <WhatsAppMark className="whatsapp-mark" />
           </a>
         </div>
       </nav>

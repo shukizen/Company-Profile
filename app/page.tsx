@@ -2,17 +2,14 @@ import Image from "next/image";
 import {
   ArrowDown,
   Check,
-  Code2,
   ExternalLink,
   Globe,
   Mail,
   MapPin,
-  PanelsTopLeft,
-  MessageCircle,
-  Rocket,
 } from "lucide-react";
 import { FAQ } from "@/components/faq";
 import { Mercury } from "@/components/mercury";
+import { ProcessWorkflow } from "@/components/process-workflow";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { ScrollTransitions } from "@/components/scroll-transitions";
 import { ServiceMarquee } from "@/components/service-marquee";
@@ -20,33 +17,6 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { ServicesGrid } from "@/components/services-grid";
 import { services } from "@/lib/services";
-
-const workSteps = [
-  {
-    icon: MessageCircle,
-    title: "Diskusi kebutuhan",
-    text: "Ceritakan bisnis, tujuan website, konten, serta fitur yang Anda perlukan.",
-    output: "Cakupan & tujuan website",
-  },
-  {
-    icon: PanelsTopLeft,
-    title: "Struktur & desain",
-    text: "Kami menyusun halaman dan tampilan website berdasarkan kebutuhan yang disepakati.",
-    output: "Susunan halaman & tampilan",
-  },
-  {
-    icon: Code2,
-    title: "Pengembangan website",
-    text: "Desain diwujudkan menjadi website responsif, lalu ditinjau bersama sebelum peluncuran.",
-    output: "Website responsif siap ditinjau",
-  },
-  {
-    icon: Rocket,
-    title: "Peluncuran",
-    text: "Website disiapkan untuk tayang dan kami membahas dukungan lanjutan sesuai kebutuhan.",
-    output: "Website tayang & siap digunakan",
-  },
-];
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
 
@@ -122,38 +92,7 @@ export default function HomePage() {
 
         <ServiceMarquee />
 
-        <section className="process section" id="process" aria-labelledby="process-title">
-          <div className="wrap">
-            <div className="section-head process-head">
-              <div className="section-head-main">
-                <p className="process-eyebrow"><span aria-hidden="true" />CARA KERJA KAMI</p>
-                <h2 id="process-title">Dari obrolan pertama<br />sampai <span>siap tayang.</span></h2>
-              </div>
-              <p className="section-summary">Tahapannya jelas dan Anda terlibat dalam setiap keputusan penting sebelum website diluncurkan.</p>
-            </div>
-            <ol className="process-grid">
-              {workSteps.map(({ title, text, output, icon: Icon }, index) => (
-                <li className={`process-step${index === workSteps.length - 1 ? " is-launch" : ""}`} key={title}>
-                  <article className="process-step-card">
-                    <div className="process-step-top">
-                      <span className="process-step-num" aria-hidden="true">0{index + 1}</span>
-                      <span className="process-step-rail" aria-hidden="true" />
-                      <span className="process-step-icon" aria-hidden="true">
-                        <Icon size={18} strokeWidth={2} />
-                      </span>
-                    </div>
-                    <h3>{title}</h3>
-                    <p className="process-step-desc">{text}</p>
-                    <p className="process-step-output">
-                      <span>Hasil</span>
-                      <strong>{output}</strong>
-                    </p>
-                  </article>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <ProcessWorkflow />
 
         <section className="projects section" id="projects" aria-labelledby="projects-title">
           <div className="projects-surface">

@@ -13,7 +13,6 @@ const revealSelectors = [
   ".section-head-main",
   ".section-summary",
   ".service-card",
-  ".process-step",
   ".project-card",
   ".faq-intro",
   ".faq-item",
@@ -129,13 +128,9 @@ export function ScrollTransitions() {
 
       if (processSection) {
         const processHeight = Math.round(processSection.getBoundingClientRect().height);
-        if (processHeight <= vh - headerHeight + 24) {
-          processSection.style.setProperty("--sticky-top", `${headerHeight}px`);
-          root.classList.add("has-sticky-process");
-        } else {
-          processSection.style.removeProperty("--sticky-top");
-          root.classList.remove("has-sticky-process");
-        }
+        const processTop = Math.min(headerHeight, vh - processHeight);
+        processSection.style.setProperty("--sticky-top", `${processTop}px`);
+        root.classList.add("has-sticky-process");
       }
     };
 
@@ -186,21 +181,6 @@ export function ScrollTransitions() {
               { ease: "linear" },
             ),
             { target: servicesSection, offset: ["start end", "start 88px"] },
-          ),
-        );
-      }
-
-      const projectsSection = document.querySelector<HTMLElement>(".projects");
-      const processWrap = document.querySelector<HTMLElement>(".process > .wrap");
-      if (projectsSection && processWrap) {
-        cleanups.push(
-          scroll(
-            animate(
-              processWrap,
-              { y: [0, Math.round(-26 * factor)], opacity: [1, 0.8] },
-              { ease: "linear" },
-            ),
-            { target: projectsSection, offset: ["start end", "start 88px"] },
           ),
         );
       }
