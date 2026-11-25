@@ -33,10 +33,10 @@ export function ServicesGrid({ services }: { services: readonly ServicePageData[
             href={`/layanan/${slug}`}
             key={slug}
           >
+            <span className="service-card-watermark" aria-hidden="true">
+              <Icon size={148} strokeWidth={1.25} />
+            </span>
             <span className="service-card-top">
-              <span className="service-card-icon" aria-hidden="true">
-                <Icon size={20} strokeWidth={2} />
-              </span>
               <span className="service-card-number" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>

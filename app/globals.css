@@ -14688,6 +14688,8 @@ summary:focus-visible {
 }
 
 .services .service-cards .service-card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 332px;
@@ -14701,9 +14703,41 @@ summary:focus-visible {
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 
+.services .service-cards .service-card > :not(.service-card-watermark) {
+  position: relative;
+  z-index: 1;
+}
+
 .services .service-cards .service-card::before {
   display: none;
   content: none;
+}
+
+.services .service-cards .service-card .service-card-watermark {
+  position: absolute;
+  top: 6px;
+  right: -18px;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  width: 148px;
+  height: 148px;
+  color: var(--palette-blue);
+  opacity: 0.07;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  transition: opacity .24s ease, transform .24s ease;
+}
+
+.services .service-cards .service-card .service-card-watermark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.services .service-cards .service-card:hover .service-card-watermark,
+.services .service-cards .service-card:focus-visible .service-card-watermark {
+  opacity: 0.11;
+  transform: rotate(-6deg) scale(1.04);
 }
 
 .services .service-cards .service-card:hover,
@@ -14726,33 +14760,9 @@ summary:focus-visible {
 .services .service-cards .service-card .service-card-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
-  margin-bottom: 18px;
-}
-
-.services .service-cards .service-card .service-card-icon,
-.services .service-cards .service-card:not(:hover):not(:focus-visible) .service-card-icon {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #d4e0f3;
-  border-radius: 8px;
-  background: #edf3ff;
-  color: var(--palette-blue);
-  box-shadow: none;
-  transform: none;
-  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
-}
-
-.services .service-cards .service-card:hover .service-card-icon,
-.services .service-cards .service-card:focus-visible .service-card-icon {
-  transform: none;
-  border-color: #06245a;
-  background: #06245a;
-  color: var(--palette-yellow);
-  box-shadow: none;
+  margin-bottom: 14px;
 }
 
 .services .service-cards .service-card .service-card-number {
@@ -14884,18 +14894,15 @@ summary:focus-visible {
   outline-offset: 3px;
 }
 
-.services .service-cards .service-card.is-featured .service-card-icon,
-.services .service-cards .service-card.is-featured:not(:hover):not(:focus-visible) .service-card-icon {
-  border-color: rgba(255, 227, 15, .35);
-  background: rgba(255, 227, 15, .14);
-  color: var(--palette-yellow);
+.services .service-cards .service-card.is-featured .service-card-watermark,
+.services .service-cards .service-card.is-featured:not(:hover):not(:focus-visible) .service-card-watermark {
+  color: #ffffff;
+  opacity: 0.065;
 }
 
-.services .service-cards .service-card.is-featured:hover .service-card-icon,
-.services .service-cards .service-card.is-featured:focus-visible .service-card-icon {
-  border-color: var(--palette-yellow);
-  background: var(--palette-yellow);
-  color: #040506;
+.services .service-cards .service-card.is-featured:hover .service-card-watermark,
+.services .service-cards .service-card.is-featured:focus-visible .service-card-watermark {
+  opacity: 0.11;
 }
 
 .services .service-cards .service-card.is-featured .service-card-number {
@@ -14979,6 +14986,13 @@ summary:focus-visible {
     padding: 20px 18px 18px !important;
   }
 
+  .services .service-cards .service-card .service-card-watermark {
+    top: 8px;
+    right: -14px;
+    width: 120px;
+    height: 120px;
+  }
+
   .services .service-cards .service-card .service-card-cta {
     margin: auto 0 0;
   }
@@ -14986,11 +15000,17 @@ summary:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .services .service-cards .service-card,
-  .services .service-cards .service-card .service-card-icon,
+  .services .service-cards .service-card .service-card-watermark,
   .services .service-cards .service-card .service-card-cta,
   .services .service-cards .service-card .service-card-cta-icon {
     transition: none;
     transform: none;
+  }
+
+  .services .service-cards .service-card .service-card-watermark,
+  .services .service-cards .service-card:hover .service-card-watermark,
+  .services .service-cards .service-card:focus-visible .service-card-watermark {
+    transform: rotate(-10deg);
   }
 }
 
