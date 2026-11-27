@@ -3,5 +3,7 @@ node_modules/
 generated/
 out/
 coverage/
+*.tsbuildinfo
+.superpowers/
 .env*
 !.env.example
