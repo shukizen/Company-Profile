@@ -103,6 +103,18 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
     setMobileOpen(false);
   };
 
+  const scrollToTop = () => {
+    if (window.location.hash) {
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
+    if (document.documentElement.classList.contains("lenis-smooth")) {
+      window.dispatchEvent(new CustomEvent("jcp:scroll-top"));
+    } else {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+  };
+
   const handleBrandToggle = () => {
     if (window.matchMedia("(max-width: 960px)").matches) {
       setMobileOpen((value) => {
@@ -157,9 +169,22 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
         </button>
 
         <div className={`nav-links${mobileOpen ? " is-open" : ""}`} id="nav-links">
-          <a href={sectionHref("home")} onClick={closeAllMenus}>
-            Beranda
-          </a>
+          {homePage ? (
+            <a
+              href="#home"
+              onClick={(event) => {
+                closeAllMenus();
+                event.preventDefault();
+                scrollToTop();
+              }}
+            >
+              Beranda
+            </a>
+          ) : (
+            <Link href="/" onClick={closeAllMenus}>
+              Beranda
+            </Link>
+          )}
 
           <div
             className={`nav-dropdown${servicesOpen ? " is-open" : ""}`}
@@ -206,11 +231,7 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
                         closeAllMenus();
                         if (isCurrent) {
                           event.preventDefault();
-                          if (document.documentElement.classList.contains("lenis-smooth")) {
-                            window.dispatchEvent(new CustomEvent("jcp:scroll-by", { detail: { top: -window.scrollY } }));
-                          } else {
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }
+                          scrollToTop();
                         }
                       }}
                       role="listitem"

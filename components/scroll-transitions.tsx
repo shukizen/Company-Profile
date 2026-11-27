@@ -63,7 +63,7 @@ export function ScrollTransitions() {
         wheelMultiplier: 0.92,
         touchMultiplier: 1,
         autoRaf: true,
-        anchors: { offset: -88 },
+        anchors: true,
         allowNestedScroll: true,
         stopInertiaOnNavigate: true,
         respectReducedMotion: true,
@@ -80,9 +80,15 @@ export function ScrollTransitions() {
         lenis.scrollTo(window.scrollY + deltaY, { lerp: 0.09 });
       };
 
+      const handleScrollTop = () => {
+        lenis?.scrollTo(0, { lerp: 0.09, force: true });
+      };
+
       window.addEventListener("jcp:scroll-by", handleScrollBy);
+      window.addEventListener("jcp:scroll-top", handleScrollTop);
       cleanups.push(() => {
         window.removeEventListener("jcp:scroll-by", handleScrollBy);
+        window.removeEventListener("jcp:scroll-top", handleScrollTop);
         lenis?.destroy();
         lenis = null;
       });

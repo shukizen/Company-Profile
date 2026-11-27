@@ -37,12 +37,13 @@ const organizationSchema = siteUrl
 export default function HomePage() {
   return (
     <>
+      <div id="home" className="scroll-top-anchor" aria-hidden="true" />
       <a className="skip-link" href="#main">Lewati ke konten</a>
       <SiteNav />
       <ScrollTransitions />
       {organizationSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: organizationSchema }} />}
       <main id="main">
-        <section className="hero wrap" id="home" aria-labelledby="hero-title">
+        <section className="hero wrap" aria-labelledby="hero-title">
           <Mercury className="hero-gradient" />
           <div className="hero-copy">
             <h1 id="hero-title">Website Bisnis Anda<br /><span>Lebih Berkembang</span></h1>

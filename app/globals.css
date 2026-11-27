@@ -99,6 +99,15 @@ main#main {
   margin-inline: auto;
 }
 
+.scroll-top-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
 .skip-link {
   position: absolute;
   top: -60px;
@@ -2287,24 +2296,6 @@ main#main {
   -webkit-line-clamp: 3;
 }
 
-.projects .tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 11px 0 14px;
-}
-
-.projects .tech-tags span {
-  padding: 4px 8px;
-  border: 1px solid #d4e0f3;
-  border-radius: 6px;
-  background: #edf3ff;
-  color: #06245a;
-  font-size: 10.5px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
 .projects .project-arrow {
   position: absolute;
   top: 18px;
@@ -3025,35 +3016,6 @@ main#main {
   color: var(--palette-yellow);
 }
 
-.footer .footer-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 11px 18px;
-  border-radius: 8px;
-  background: var(--palette-yellow);
-  color: #040506;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  transition: background 0.18s ease, transform 0.18s ease;
-}
-
-.footer .footer-cta .whatsapp-mark {
-  width: 17px;
-  height: 17px;
-  flex: 0 0 auto;
-}
-
-.footer .footer-cta:hover {
-  background: #ffed4a;
-  transform: translateY(-1px);
-}
-
 .footer .footer-col,
 .footer .footer-locale {
   display: flex;
@@ -3296,10 +3258,6 @@ main#main {
     padding: 14px 0 32px;
   }
 
-  .footer .footer-cta {
-    width: 100%;
-  }
-
   .footer .footer-nav a {
     min-height: 44px;
     padding: 8px 0;
@@ -3348,7 +3306,6 @@ main#main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .footer .footer-cta,
   .footer .footer-nav a,
   .footer .footer-contact-link,
   .footer .footer-signoff,

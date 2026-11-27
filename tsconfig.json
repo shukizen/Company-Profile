@@ -38,7 +38,6 @@
     "lib/utils.ts",
     "lib/gradient-engine/**/*.ts",
     "next.config.ts",
-    "generated/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
