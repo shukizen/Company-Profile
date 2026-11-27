@@ -9,6 +9,8 @@ import { WhatsAppMark } from "@/components/whatsapp-mark";
 import { getServiceIcon } from "@/lib/service-icons";
 import { services } from "@/lib/services";
 
+const WHATSAPP_HREF = "https://wa.me/6285600604388";
+
 export function SiteNav({ homePage = true }: { homePage?: boolean }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,7 +23,7 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
 
   useEffect(() => {
     const updateScrolled = () => setScrolled(window.scrollY > 24);
-    const media = window.matchMedia("(max-width: 760px)");
+    const media = window.matchMedia("(max-width: 960px)");
     const updateMedia = () => {
       setIsMobile(media.matches);
       if (media.matches) setServicesOpen(false);
@@ -102,7 +104,7 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
   };
 
   const handleBrandToggle = () => {
-    if (window.matchMedia("(max-width: 760px)").matches) {
+    if (window.matchMedia("(max-width: 960px)").matches) {
       setMobileOpen((value) => {
         if (value) setServicesOpen(false);
         return !value;
@@ -235,10 +237,19 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
           <a href={sectionHref("projects")} onClick={closeAllMenus}>
             Contoh Website
           </a>
+          <a href={sectionHref("packages")} onClick={closeAllMenus}>
+            Skema Website
+          </a>
           <a href={sectionHref("contact")} onClick={closeAllMenus}>
             Kontak
           </a>
-          <a className="button button-small" href={sectionHref("contact")} onClick={closeAllMenus}>
+          <a
+            className="button button-small"
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeAllMenus}
+          >
             Konsultasi Website <WhatsAppMark className="whatsapp-mark" />
           </a>
         </div>
