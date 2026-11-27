@@ -260,6 +260,56 @@ export default function HomePage() {
           <div className="contact-surface">
             <div className="wrap">
               <div className="contact-card">
+                <svg
+                  className="contact-orbit-art"
+                  viewBox="0 0 1200 600"
+                  preserveAspectRatio="xMaxYMid slice"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <radialGradient id="contactOrbitFade" cx="74%" cy="50%" r="62%">
+                      <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                      <stop offset="70%" stopColor="#ffffff" stopOpacity="0.65" />
+                      <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+                    </radialGradient>
+                    <mask id="contactOrbitMask">
+                      <rect width="1200" height="600" fill="url(#contactOrbitFade)" />
+                    </mask>
+                  </defs>
+                  <g mask="url(#contactOrbitMask)">
+                    <line x1="890" y1="0" x2="890" y2="600" stroke="#9ec0ff" strokeOpacity="0.08" strokeWidth="1" />
+                    <line x1="200" y1="300" x2="1200" y2="300" stroke="#9ec0ff" strokeOpacity="0.08" strokeWidth="1" />
+                    <circle cx="890" cy="300" r="165" fill="none" stroke="#9ec0ff" strokeOpacity="0.11" strokeWidth="1.2" />
+                    <circle
+                      className="contact-orbit-ring-slow"
+                      cx="890"
+                      cy="300"
+                      r="260"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeOpacity="0.1"
+                      strokeWidth="1.2"
+                      strokeDasharray="6 9"
+                    />
+                    <circle cx="890" cy="300" r="365" fill="none" stroke="#9ec0ff" strokeOpacity="0.085" strokeWidth="1.2" />
+                    <circle
+                      className="contact-orbit-ring-slow is-reverse"
+                      cx="890"
+                      cy="300"
+                      r="480"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeOpacity="0.065"
+                      strokeWidth="1.2"
+                      strokeDasharray="3 10"
+                    />
+                    <circle cx="890" cy="300" r="600" fill="none" stroke="#9ec0ff" strokeOpacity="0.05" strokeWidth="1.2" />
+                    <circle cx="525" cy="300" r="4.5" fill="#ffe30f" fillOpacity="0.45" />
+                    <circle cx="525" cy="300" r="11" fill="none" stroke="#ffe30f" strokeOpacity="0.22" strokeWidth="1.2" />
+                    <circle cx="670" cy="161" r="3.5" fill="#7cb3ff" fillOpacity="0.42" />
+                    <circle cx="598" cy="519" r="4" fill="#ffe30f" fillOpacity="0.34" />
+                  </g>
+                </svg>
                 <div className="contact-intro">
                   <p className="contact-eyebrow"><span aria-hidden="true" />HUBUNGI KAMI</p>
                   <h2 id="contact-title">Siap punya website untuk <span>bisnis Anda?</span></h2>

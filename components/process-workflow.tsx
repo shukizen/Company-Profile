@@ -180,7 +180,10 @@ export function ProcessWorkflow() {
             </p>
           </div>
 
-          <div className="process-tracker" aria-live="polite">
+          <div
+            className={`process-tracker${activeIndex === workSteps.length - 1 ? " is-complete" : ""}`}
+            aria-live="polite"
+          >
             <div className="process-tracker-count">
               <strong>0{activeIndex + 1}</strong>
               <span>/ 0{workSteps.length}</span>

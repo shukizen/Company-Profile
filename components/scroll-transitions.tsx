@@ -229,15 +229,17 @@ export function ScrollTransitions() {
         );
       }
 
-      const projectsSection = document.querySelector<HTMLElement>(".projects");
-      const projectsSurface = document.querySelector<HTMLElement>(".projects .projects-surface");
-      if (projectsSection && projectsSurface) {
+      const bindInsetExpand = (sectionSelector: string, surfaceSelector: string) => {
+        const sectionEl = document.querySelector<HTMLElement>(sectionSelector);
+        const surfaceEl = document.querySelector<HTMLElement>(surfaceSelector);
+        if (!sectionEl || !surfaceEl) return;
+
         const insetX = compact ? 14 : 28;
         const insetRadius = compact ? 28 : 44;
         cleanups.push(
           scroll(
             animate(
-              projectsSurface,
+              surfaceEl,
               {
                 clipPath: [
                   `inset(0px ${insetX}px 0px ${insetX}px round ${insetRadius}px)`,
@@ -247,37 +249,58 @@ export function ScrollTransitions() {
               },
               { ease: "linear" },
             ),
-            { target: projectsSection, offset: ["start 94%", "start 24%"] },
+            { target: sectionEl, offset: ["start 94%", "start 24%"] },
           ),
           () => {
-            projectsSurface.style.removeProperty("clip-path");
-            projectsSurface.style.removeProperty("transform");
+            surfaceEl.style.removeProperty("clip-path");
+            surfaceEl.style.removeProperty("transform");
           },
         );
-      }
+      };
 
-      const contactSection = document.querySelector<HTMLElement>(".contact");
-      const contactCard = document.querySelector<HTMLElement>(".contact .contact-card");
-      if (contactSection && contactCard) {
+      const bindCardScaleReveal = (
+        sectionSelector: string,
+        cardSelector: string,
+        yOffset: number,
+        startScale: number,
+        startOpacity: number,
+        endOffset: "start 46%" | "start 54%",
+      ) => {
+        const sectionEl = document.querySelector<HTMLElement>(sectionSelector);
+        const cardEl = document.querySelector<HTMLElement>(cardSelector);
+        if (!sectionEl || !cardEl) return;
+
         cleanups.push(
           scroll(
             animate(
-              contactCard,
+              cardEl,
               {
-                y: [Math.round(24 * factor), 0],
-                scale: [compact ? 0.985 : 0.97, 1],
-                opacity: [0.85, 1],
+                y: [Math.round(yOffset * factor), 0],
+                scale: [startScale, 1],
+                opacity: [startOpacity, 1],
               },
               { ease: "linear" },
             ),
-            { target: contactSection, offset: ["start 96%", "start 46%"] },
+            { target: sectionEl, offset: ["start 96%", endOffset] },
           ),
           () => {
-            contactCard.style.removeProperty("transform");
-            contactCard.style.removeProperty("opacity");
+            cardEl.style.removeProperty("transform");
+            cardEl.style.removeProperty("opacity");
           },
         );
-      }
+      };
+
+      bindInsetExpand(".projects", ".projects .projects-surface");
+      bindInsetExpand(".service-reference-section", ".service-reference-section .service-reference-surface");
+      bindCardScaleReveal(".contact", ".contact .contact-card", 24, compact ? 0.985 : 0.97, 0.85, "start 46%");
+      bindCardScaleReveal(
+        ".service-cta-section",
+        ".service-cta-section .service-cta-card",
+        18,
+        compact ? 0.985 : 0.975,
+        0.88,
+        "start 54%",
+      );
 
       const referenceSection = document.querySelector<HTMLElement>(".service-reference-section");
       const referenceGlow = document.querySelector<HTMLElement>(".service-reference-glow");

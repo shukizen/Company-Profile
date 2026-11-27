@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowDown, Check, ChevronRight } from "lucide-react";
 import { ScrollTransitions } from "@/components/scroll-transitions";
+import { ServiceCtaSection } from "@/components/service-cta-section";
 import { ServiceReferenceGrid } from "@/components/service-reference-grid";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -248,6 +249,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </div>
           </div>
         </section>
+
+        <ServiceCtaSection serviceTitle={service.title} slug={service.slug} />
       </main>
       <SiteFooter homePage={false} />
     </>
