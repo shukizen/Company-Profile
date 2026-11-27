@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { animate, inView, scroll } from "motion";
+
+let lastPathname: string | null = null;
 
 const revealSelectors = [
   ".hero-copy > .hero-badge",
@@ -28,7 +31,16 @@ const revealSelectors = [
 ];
 
 export function ScrollTransitions() {
+  const pathname = usePathname();
+
   useEffect(() => {
+    const isClientTransition = lastPathname !== null && lastPathname !== pathname;
+    lastPathname = pathname;
+
+    if (isClientTransition && !window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    }
+
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktopQuery = window.matchMedia("(min-width: 768px)");
     const reduceMotion = reduceMotionQuery.matches;
@@ -56,6 +68,10 @@ export function ScrollTransitions() {
         stopInertiaOnNavigate: true,
         respectReducedMotion: true,
       });
+
+      if (isClientTransition && !window.location.hash) {
+        lenis.scrollTo(0, { immediate: true, force: true });
+      }
 
       const handleScrollBy = (event: Event) => {
         const customEvent = event as CustomEvent<{ top?: number }>;
@@ -396,7 +412,7 @@ export function ScrollTransitions() {
         item.style.removeProperty("--reveal-delay");
       });
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

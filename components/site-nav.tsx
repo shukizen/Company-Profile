@@ -41,6 +41,8 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
   useEffect(() => {
     setServicesOpen(false);
     setMobileOpen(false);
+    const frameId = window.requestAnimationFrame(() => setScrolled(window.scrollY > 24));
+    return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
 
   useEffect(() => {
@@ -195,9 +197,20 @@ export function SiteNav({ homePage = true }: { homePage?: boolean }) {
                     <Link
                       key={item.slug}
                       href={href}
+                      scroll={false}
                       className={`nav-dropdown-item${isCurrent ? " is-current" : ""}`}
                       aria-current={isCurrent ? "page" : undefined}
-                      onClick={closeAllMenus}
+                      onClick={(event) => {
+                        closeAllMenus();
+                        if (isCurrent) {
+                          event.preventDefault();
+                          if (document.documentElement.classList.contains("lenis-smooth")) {
+                            window.dispatchEvent(new CustomEvent("jcp:scroll-by", { detail: { top: -window.scrollY } }));
+                          } else {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }
+                      }}
                       role="listitem"
                     >
                       <span className="nav-dropdown-icon" aria-hidden="true">

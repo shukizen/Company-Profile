@@ -14,6 +14,7 @@ export function ServicesGrid({ services }: { services: readonly ServicePageData[
           <Link
             className={`service-card${isFeatured ? " is-featured" : ""}`}
             href={`/layanan/${slug}`}
+            scroll={false}
             key={slug}
           >
             <span className="service-card-watermark" aria-hidden="true">
