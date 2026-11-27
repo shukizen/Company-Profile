@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowDown, Check, ChevronRight } from "lucide-react";
 import { ScrollTransitions } from "@/components/scroll-transitions";
 import { ServiceReferenceGrid } from "@/components/service-reference-grid";
 import { SiteFooter } from "@/components/site-footer";
@@ -119,17 +119,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </aside>
             </div>
           </div>
-
-          <svg
-            className="service-detail-wave-cap"
-            viewBox="0 0 1440 72"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path fill="#FFE30F" d="M0 4 Q720 104 1440 4 L1440 10 Q720 110 0 10 Z" />
-            <path fill="#0047BD" d="M0 10 Q720 110 1440 10 L1440 16 Q720 116 0 16 Z" />
-            <path fill="#ffffff" d="M0 16 Q720 116 1440 16 V72 H0 Z" />
-          </svg>
         </section>
 
         <section className="service-about-section" aria-labelledby="service-about-title">
@@ -211,6 +200,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           aria-labelledby="service-references-title"
         >
           <div className="service-reference-surface">
+            <span className="service-reference-glow" aria-hidden="true" />
             <div className="wrap">
               <div className="service-reference-heading">
                 {isCustom ? (
@@ -255,54 +245,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 serviceTitle={service.title}
                 badgePrefix={isCustom ? "Proyek JCPWebSolutions" : "Website Referensi"}
               />
-
-              <div className="service-switcher">
-                <div className="service-switcher-head">
-                  <div>
-                    <p className="service-badge service-badge-dark">
-                      <span aria-hidden="true" />
-                      JELAJAHI LAYANAN LAIN
-                    </p>
-                    <h2>Lihat jenis website lainnya</h2>
-                  </div>
-                  <a
-                    className="service-switcher-cta"
-                    href="https://wa.me/6285600604388"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <WhatsAppMark className="whatsapp-mark" />
-                    <span>Diskusikan kebutuhan Anda</span>
-                  </a>
-                </div>
-                <nav className="service-switcher-grid" aria-label="Daftar layanan website">
-                  {services.map((item, index) => {
-                    const isCurrent = item.slug === service.slug;
-                    const ItemIcon = getServiceIcon(item.slug);
-                    return (
-                      <a
-                        className={`service-switcher-item${isCurrent ? " is-current" : ""}`}
-                        href={`/layanan/${item.slug}`}
-                        aria-current={isCurrent ? "page" : undefined}
-                        key={item.slug}
-                      >
-                        <span className="service-switcher-icon" aria-hidden="true">
-                          <ItemIcon size={16} strokeWidth={2} />
-                        </span>
-                        <span className="service-switcher-copy">
-                          <span className="service-switcher-num">0{index + 1}</span>
-                          <span className="service-switcher-title">{item.title}</span>
-                        </span>
-                        {isCurrent ? (
-                          <span className="service-switcher-current">Aktif</span>
-                        ) : (
-                          <ArrowRight size={15} aria-hidden="true" />
-                        )}
-                      </a>
-                    );
-                  })}
-                </nav>
-              </div>
             </div>
           </div>
         </section>

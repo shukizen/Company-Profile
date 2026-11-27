@@ -13,6 +13,8 @@ const revealSelectors = [
   ".section-head-main",
   ".section-summary",
   ".service-card",
+  ".advantage-card",
+  ".package-card",
   ".project-card",
   ".faq-intro",
   ".faq-item",
@@ -35,6 +37,7 @@ export function ScrollTransitions() {
     );
     const heroSection = document.querySelector<HTMLElement>(".hero");
     const processSection = document.querySelector<HTMLElement>(".process");
+    const guideSection = document.querySelector<HTMLElement>(".service-guide-section");
     const headerEl = document.querySelector<HTMLElement>(".site-header");
     const root = document.documentElement;
     const cleanups: VoidFunction[] = [];
@@ -45,11 +48,11 @@ export function ScrollTransitions() {
     const groups = new Map<HTMLElement, HTMLElement[]>();
     items.forEach((item) => {
       item.classList.add("scroll-reveal-item");
-      const parent = item.parentElement;
-      if (!parent) return;
-      const siblings = groups.get(parent) ?? [];
+      const groupRoot = item.closest<HTMLElement>(".service-reference-grid") ?? item.parentElement;
+      if (!groupRoot) return;
+      const siblings = groups.get(groupRoot) ?? [];
       siblings.push(item);
-      groups.set(parent, siblings);
+      groups.set(groupRoot, siblings);
     });
 
     groups.forEach((siblings) => {
@@ -107,12 +110,13 @@ export function ScrollTransitions() {
       );
     }
 
-    // Apply sticky stacking only to key focal transitions (Hero -> Services, Process -> Projects).
+    // Apply sticky stacking only to key focal transitions (Hero -> Services, Process -> Projects, Guide -> References).
     const syncStickyOffsets = () => {
       if (reduceMotion || !desktopQuery.matches) {
-        root.classList.remove("has-sticky-hero", "has-sticky-process");
+        root.classList.remove("has-sticky-hero", "has-sticky-process", "has-sticky-service-guide");
         heroSection?.style.removeProperty("--sticky-top");
         processSection?.style.removeProperty("--sticky-top");
+        guideSection?.style.removeProperty("--sticky-top");
         return;
       }
 
@@ -132,6 +136,13 @@ export function ScrollTransitions() {
         processSection.style.setProperty("--sticky-top", `${processTop}px`);
         root.classList.add("has-sticky-process");
       }
+
+      if (guideSection) {
+        const guideHeight = Math.round(guideSection.getBoundingClientRect().height);
+        const guideTop = Math.min(headerHeight, vh - guideHeight);
+        guideSection.style.setProperty("--sticky-top", `${guideTop}px`);
+        root.classList.add("has-sticky-service-guide");
+      }
     };
 
     syncStickyOffsets();
@@ -140,6 +151,7 @@ export function ScrollTransitions() {
       const observer = new ResizeObserver(syncStickyOffsets);
       if (heroSection) observer.observe(heroSection);
       if (processSection) observer.observe(processSection);
+      if (guideSection) observer.observe(guideSection);
       cleanups.push(() => observer.disconnect());
     }
 
@@ -199,13 +211,94 @@ export function ScrollTransitions() {
           ),
         );
       }
+
+      const referenceSection = document.querySelector<HTMLElement>(".service-reference-section");
+      const referenceGlow = document.querySelector<HTMLElement>(".service-reference-glow");
+      const referenceHeading = document.querySelector<HTMLElement>(".service-reference-heading");
+      const referenceSlots = Array.from(document.querySelectorAll<HTMLElement>(".service-reference-slot"));
+
+      if (referenceSection && referenceGlow) {
+        cleanups.push(
+          scroll(
+            animate(
+              referenceGlow,
+              { y: [Math.round(-36 * factor), Math.round(44 * factor)] },
+              { ease: "linear" },
+            ),
+            { target: referenceSection, offset: ["start end", "end start"] },
+          ),
+        );
+      }
+
+      if (referenceSection && referenceHeading) {
+        cleanups.push(
+          scroll(
+            animate(
+              referenceHeading,
+              { y: [Math.round(28 * factor), 0] },
+              { ease: "linear" },
+            ),
+            { target: referenceSection, offset: ["start 96%", "start 32%"] },
+          ),
+        );
+      }
+
+      if (referenceSection && referenceSlots.length > 0) {
+        const tabletQuery = window.matchMedia("(min-width: 641px) and (max-width: 1023px)");
+        const wideQuery = window.matchMedia("(min-width: 1024px)");
+        let slotStops: VoidFunction[] = [];
+
+        const bindReferenceSlots = () => {
+          slotStops.forEach((stop) => stop());
+          slotStops = [];
+          referenceSlots.forEach((slot) => slot.style.removeProperty("transform"));
+
+          const cols = wideQuery.matches ? 3 : tabletQuery.matches ? 2 : 1;
+          if (cols === 1) return;
+
+          referenceSlots.forEach((slot, index) => {
+            const col = index % cols;
+            const range =
+              cols === 3
+                ? col === 1
+                  ? [28, -22]
+                  : [10, -8]
+                : col === 1
+                  ? [16, -12]
+                  : [6, -4];
+
+            slotStops.push(
+              scroll(
+                animate(slot, { y: range }, { ease: "linear" }),
+                { target: referenceSection, offset: ["start end", "end start"] },
+              ),
+            );
+          });
+        };
+
+        bindReferenceSlots();
+        tabletQuery.addEventListener("change", bindReferenceSlots);
+        wideQuery.addEventListener("change", bindReferenceSlots);
+        cleanups.push(() => {
+          slotStops.forEach((stop) => stop());
+          tabletQuery.removeEventListener("change", bindReferenceSlots);
+          wideQuery.removeEventListener("change", bindReferenceSlots);
+          referenceSlots.forEach((slot) => slot.style.removeProperty("transform"));
+        });
+      }
     }
 
     return () => {
       cleanups.forEach((cleanup) => cleanup());
-      root.classList.remove("has-scroll-reveal", "has-sticky-hero", "has-sticky-process");
+      root.classList.remove(
+        "has-scroll-reveal",
+        "has-sticky-hero",
+        "has-sticky-process",
+        "has-sticky-service-guide",
+      );
       heroSection?.style.removeProperty("--sticky-top");
       processSection?.style.removeProperty("--sticky-top");
+      guideSection?.style.removeProperty("--sticky-top");
       items.forEach((item) => {
         item.classList.remove("scroll-reveal-item");
         item.style.removeProperty("opacity");
