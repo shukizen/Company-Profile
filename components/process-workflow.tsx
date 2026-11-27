@@ -142,6 +142,11 @@ export function ProcessWorkflow() {
     const deltaY = firstCenter - targetFirstCenter - (ratio < 1 ? stuckOverlap : 0);
 
     setActiveIndex(index);
+    if (!reduceMotion && document.documentElement.classList.contains("lenis-smooth")) {
+      window.dispatchEvent(new CustomEvent("jcp:scroll-by", { detail: { top: deltaY } }));
+      return;
+    }
+
     window.scrollBy({
       top: deltaY,
       behavior: reduceMotion ? "auto" : "smooth",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Lenis from "lenis";
 import { animate, inView, scroll } from "motion";
 
 const revealSelectors = [
@@ -42,6 +43,35 @@ export function ScrollTransitions() {
     const root = document.documentElement;
     const cleanups: VoidFunction[] = [];
 
+    let lenis: Lenis | null = null;
+    if (!reduceMotion) {
+      lenis = new Lenis({
+        lerp: 0.085,
+        smoothWheel: true,
+        wheelMultiplier: 0.92,
+        touchMultiplier: 1,
+        autoRaf: true,
+        anchors: { offset: -88 },
+        allowNestedScroll: true,
+        stopInertiaOnNavigate: true,
+        respectReducedMotion: true,
+      });
+
+      const handleScrollBy = (event: Event) => {
+        const customEvent = event as CustomEvent<{ top?: number }>;
+        const deltaY = customEvent.detail?.top;
+        if (!lenis || typeof deltaY !== "number" || Number.isNaN(deltaY)) return;
+        lenis.scrollTo(window.scrollY + deltaY, { lerp: 0.09 });
+      };
+
+      window.addEventListener("jcp:scroll-by", handleScrollBy);
+      cleanups.push(() => {
+        window.removeEventListener("jcp:scroll-by", handleScrollBy);
+        lenis?.destroy();
+        lenis = null;
+      });
+    }
+
     root.classList.add("has-scroll-reveal");
 
     // Staggered item reveals.
@@ -57,7 +87,7 @@ export function ScrollTransitions() {
 
     groups.forEach((siblings) => {
       siblings.forEach((item, index) => {
-        item.style.setProperty("--reveal-delay", `${Math.min(index * 80, 320)}ms`);
+        item.style.setProperty("--reveal-delay", `${Math.min(index * 70, 280)}ms`);
       });
     });
 
@@ -71,9 +101,9 @@ export function ScrollTransitions() {
         element,
         reduceMotion ? { opacity: 1 } : { opacity: 1, translate: "0px 0px" },
         {
-          duration: reduceMotion ? 0.35 : 0.72,
+          duration: reduceMotion ? 0.35 : 0.85,
           delay: delay / 1000,
-          ease: [0.22, 1, 0.36, 1],
+          ease: [0.16, 1, 0.3, 1],
         },
       );
       cleanups.push(() => controls.stop());
@@ -105,7 +135,7 @@ export function ScrollTransitions() {
           (element) => {
             revealItem(element as HTMLElement);
           },
-          { amount: 0.06, margin: "0px 0px -20px 0px" },
+          { amount: 0.04, margin: "0px 0px -36px 0px" },
         ),
       );
     }
@@ -143,6 +173,8 @@ export function ScrollTransitions() {
         guideSection.style.setProperty("--sticky-top", `${guideTop}px`);
         root.classList.add("has-sticky-service-guide");
       }
+
+      lenis?.resize();
     };
 
     syncStickyOffsets();
@@ -197,6 +229,33 @@ export function ScrollTransitions() {
         );
       }
 
+      const projectsSection = document.querySelector<HTMLElement>(".projects");
+      const projectsSurface = document.querySelector<HTMLElement>(".projects .projects-surface");
+      if (projectsSection && projectsSurface) {
+        const insetX = compact ? 14 : 28;
+        const insetRadius = compact ? 28 : 44;
+        cleanups.push(
+          scroll(
+            animate(
+              projectsSurface,
+              {
+                clipPath: [
+                  `inset(0px ${insetX}px 0px ${insetX}px round ${insetRadius}px)`,
+                  "inset(0px 0px 0px 0px round 0px)",
+                ],
+                scale: [compact ? 0.985 : 0.98, 1],
+              },
+              { ease: "linear" },
+            ),
+            { target: projectsSection, offset: ["start 94%", "start 24%"] },
+          ),
+          () => {
+            projectsSurface.style.removeProperty("clip-path");
+            projectsSurface.style.removeProperty("transform");
+          },
+        );
+      }
+
       const contactSection = document.querySelector<HTMLElement>(".contact");
       const contactCard = document.querySelector<HTMLElement>(".contact .contact-card");
       if (contactSection && contactCard) {
@@ -204,11 +263,19 @@ export function ScrollTransitions() {
           scroll(
             animate(
               contactCard,
-              { y: [Math.round(22 * factor), 0] },
+              {
+                y: [Math.round(24 * factor), 0],
+                scale: [compact ? 0.985 : 0.97, 1],
+                opacity: [0.85, 1],
+              },
               { ease: "linear" },
             ),
-            { target: contactSection, offset: ["start 95%", "start 50%"] },
+            { target: contactSection, offset: ["start 96%", "start 46%"] },
           ),
+          () => {
+            contactCard.style.removeProperty("transform");
+            contactCard.style.removeProperty("opacity");
+          },
         );
       }
 
